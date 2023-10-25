@@ -1,0 +1,12 @@
+{
+  "name": "realestate-backend",
+  "version": "1.0.0",
+  "description": "Real estate company management software backend",
+  "main": "Server.js",
+  "scripts": {
+    "test": "node Server.js",
+    "start": "node server.js"
+  },
+  "author": "Koncept Tech",
+  "license": "ISC"
+}
