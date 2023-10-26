@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import Navbar from '../Components/Navbar'
+import Navbar from '../../Components/Navbar'
 
 
 const mapStateToProps = (state) => {
@@ -14,9 +14,8 @@ const mapStateToProps = (state) => {
 export const Home = (props) => {
     return (
         <div>
-            <div className='bg-dark'>
-                <Navbar />
-            </div>
+
+            Home
 
         </div>
     )

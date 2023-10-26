@@ -2,7 +2,7 @@ import { TEST } from "./ActionTypes"
 
 const initialState = {
 
-    authenticated: false,
+    authenticated: true,
     decodedToken: {},
 
 }

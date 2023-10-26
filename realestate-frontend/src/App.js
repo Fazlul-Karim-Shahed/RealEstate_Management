@@ -1,11 +1,13 @@
 
 import './App.css';
-import Home from './Pages/Home';
+import Navbar from './Components/Navbar';
+import Router from './Routers/Router';
 
 function App() {
   return (
     <div className="App">
-      <Home />
+      <div className="bg-dark"><Navbar /></div>
+      <Router />
     </div>
   );
 }
