@@ -7,6 +7,8 @@ import Properties from '../Pages/Client/Properties'
 import About from '../Pages/Client/About'
 import Contact from '../Pages/Client/Contact'
 import Account from '../Pages/Client/Account'
+import AuthForm from '../Pages/Client/AuthForm'
+import Logout from '../Pages/Client/Logout'
 
 const mapStateToProps = (state) => {
 
@@ -45,6 +47,9 @@ export const Router = (props) => {
         <Route path='/about' element={<About />} />
         <Route path='/contact' element={<Contact />} />
         <Route path='/account' element={<Account />} />
+        <Route path='/signup' element={<AuthForm mode='signup' />} />
+        <Route path='/signin' element={<AuthForm mode='signin' />} />
+        <Route path='/logout' element={<Logout />} />
 
         {adminRoutes}
 

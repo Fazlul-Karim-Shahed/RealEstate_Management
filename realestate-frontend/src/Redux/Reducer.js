@@ -1,9 +1,9 @@
-import { TEST } from "./ActionTypes"
+import { CHECK_AUTH, DECODE_TOKEN } from "./ActionTypes"
 
 const initialState = {
 
-    authenticated: true,
-    decodedToken: {},
+    authenticated: false,
+    decodedToken: null,
 
 }
 
@@ -11,13 +11,21 @@ const initialState = {
 
 const Reducer = (state = initialState, action) => {
 
-    if (action.types === TEST) {
+    if (action.type === CHECK_AUTH) {
 
         return {
             ...state,
+            authenticated: action.value
         }
     }
 
+    if (action.type === DECODE_TOKEN) {
+        // console.log(action.value);
+        return {
+            ...state,
+            decodedToken: action.value
+        }
+    }
 
     return state
 
