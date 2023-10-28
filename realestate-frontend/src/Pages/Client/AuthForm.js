@@ -29,7 +29,7 @@ const AuthForm = (props) => {
             <Formik
 
                 initialValues={props.mode === 'signup' ? {
-                    name: '',
+                    username: '',
                     email: '',
                     password: ''
                 } : {
@@ -44,7 +44,7 @@ const AuthForm = (props) => {
                         setSpin(true)
 
                         axios.post(props.mode === 'signup' ? signUpUrl : signInUrl, props.mode === 'signup' ? {
-                            name: values.name,
+                            username: values.username,
                             email: values.email,
                             password: values.password,
                         } : {
@@ -105,9 +105,9 @@ const AuthForm = (props) => {
                                         <InputGroupText><FontAwesomeIcon icon={faUser} /></InputGroupText>
                                         <Input
                                             onChange={handleChange}
-                                            value={values.name}
+                                            value={values.username}
                                             type='text'
-                                            name='name'
+                                            name='username'
                                             placeholder='User name'
                                         />
                                     </InputGroup> : ''}
