@@ -1,5 +1,5 @@
 import React from 'react'
-import '../Components/Spinner'
+import '../Styles/Spinner.css'
 
 export default function Spinner() {
     return (

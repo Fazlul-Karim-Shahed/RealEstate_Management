@@ -6,9 +6,9 @@ import { Route, Routes } from 'react-router'
 import Properties from '../Pages/Client/Properties'
 import About from '../Pages/Client/About'
 import Contact from '../Pages/Client/Contact'
-import Account from '../Pages/Client/Account'
 import AuthForm from '../Pages/Client/AuthForm'
 import Logout from '../Pages/Client/Logout'
+import Profile from '../Pages/Client/Profile'
 
 const mapStateToProps = (state) => {
 
@@ -46,7 +46,7 @@ export const Router = (props) => {
         <Route path='/properties' element={<Properties />} />
         <Route path='/about' element={<About />} />
         <Route path='/contact' element={<Contact />} />
-        <Route path='/account' element={<Account />} />
+        <Route path='/profile' element={<Profile />} />
         <Route path='/signup' element={<AuthForm mode='signup' />} />
         <Route path='/signin' element={<AuthForm mode='signin' />} />
         <Route path='/logout' element={<Logout />} />

@@ -1,9 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-export const Account = (props) => {
+export const Profile = (props) => {
   return (
-    <div>Account</div>
+    <div>Profile</div>
   )
 }
 
@@ -11,4 +11,4 @@ const mapStateToProps = (state) => ({})
 
 const mapDispatchToProps = {}
 
-export default connect(mapStateToProps, mapDispatchToProps)(Account)
+export default connect(mapStateToProps, mapDispatchToProps)(Profile)

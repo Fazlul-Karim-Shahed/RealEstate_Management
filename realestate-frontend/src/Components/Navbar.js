@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import '../Styles/Navbar.css'
-import { Offcanvas, OffcanvasBody, OffcanvasHeader } from 'reactstrap';
+import { DropdownItem, DropdownMenu, DropdownToggle, Offcanvas, OffcanvasBody, OffcanvasHeader, UncontrolledDropdown } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 // import { Fade } from 'react-reveal';
@@ -60,9 +60,27 @@ export const Navbar = (props) => {
                         <Link className='text-decoration-none mx-2 nav_a' to="/about">About</Link>
                         <Link className='text-decoration-none mx-2 nav_a' to="/contact">Contact</Link>
 
-                        {props.authenticated ? <Link className='text-decoration-none mx-2 nav_a' to="/account">My Account</Link> : <Link className='text-decoration-none mx-2 nav_a' to="/signin">Login</Link>}
+                        {props.authenticated ?
 
-                        {props.authenticated ? <Link className='text-decoration-none mx-2 nav_a' to="/logout">Logout</Link> : ''}
+                            <UncontrolledDropdown className='d-inline'>
+
+                                <DropdownToggle className='bg-transparent border-0 mb-1' caret>
+                                    <span className=''>My Account</span>
+                                </DropdownToggle>
+
+                                <DropdownMenu>
+                                    <DropdownItem><Link className='text-decoration-none nav_a text-dark' to="/profile">Profile</Link></DropdownItem>
+                                    <DropdownItem divider />
+                                    <DropdownItem><Link className='text-decoration-none nav_a text-dark' to="/logout">Logout</Link></DropdownItem>
+                                </DropdownMenu>
+
+                            </UncontrolledDropdown>
+
+                            : <Link className='text-decoration-none mx-2 nav_a' to="/signin">Login</Link>}
+
+
+
+                        {/* {props.authenticated ? <Link className='text-decoration-none mx-2 nav_a' to="/logout">Logout</Link> : ''} */}
 
                         <button className='text-decoration-none mx-2 btn btn-outline-primary text-white mb-1' href="#">Submit Property</button>
                     </div>
@@ -86,12 +104,30 @@ export const Navbar = (props) => {
                             <Link onClick={toggle} className='off_canvas_a text-decoration-none d-block py-3 text-center h5 ' to="/about">About</Link>
                             <Link onClick={toggle} className='off_canvas_a text-decoration-none d-block py-3 text-center h5 ' to="/contact">Contact</Link>
 
-                            
-
-                            {props.authenticated ? <Link onClick={toggle} className='off_canvas_a text-decoration-none d-block py-3 text-center h5 ' to="/account">My Account</Link> : <Link onClick={toggle} className='off_canvas_a text-decoration-none d-block py-3 text-center h5 ' to="/signin">Login</Link>}
 
 
-                            {props.authenticated ? <Link onClick={toggle} className='off_canvas_a text-decoration-none d-block py-3 text-center h5 ' to="/logout">Logout</Link> : ''}
+                            {props.authenticated ?
+
+                                <div className='text-center mb-3'>
+                                    <UncontrolledDropdown direction='' className='d-inline'>
+
+                                        <DropdownToggle className='bg-transparent text-dark border-0' caret>
+                                            <span className='h5'>My Account</span>
+                                        </DropdownToggle>
+
+                                        <DropdownMenu>
+                                            <DropdownItem><Link onClick={toggle} className='off_canvas_a text-decoration-none h6' to="/profile">Profile</Link></DropdownItem>
+                                            <DropdownItem divider />
+                                            <DropdownItem><Link onClick={toggle} className='off_canvas_a text-decoration-none h6' to="/logout">Logout</Link></DropdownItem>
+                                        </DropdownMenu>
+
+                                    </UncontrolledDropdown>
+                                </div>
+
+
+                                : <Link onClick={toggle} className='off_canvas_a text-decoration-none d-block py-3 text-center h5 ' to="/signin">Login</Link>}
+
+
 
                             <div className='text-center'>
                                 <button className='text-decoration-none btn btn-outline-primary my-2' href="#">Submit Property</button>

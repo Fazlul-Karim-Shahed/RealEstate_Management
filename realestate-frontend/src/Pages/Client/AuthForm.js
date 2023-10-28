@@ -53,11 +53,13 @@ const AuthForm = (props) => {
                         })
                             .then(data => {
 
+
+
                                 if (data.data.error) throw data.data.message
                                 else {
 
+                                    setSpin(false)
                                     console.log(data.data)
-
                                     setErrorMessage('')
                                     saveToken(data.data.value.token)
                                     tokenDecode().then(data => {
@@ -140,13 +142,16 @@ const AuthForm = (props) => {
                                 </form>
                             </ToastBody>
                         </Toast>
-                        {spin ? Spinner : ''}
+
+
 
 
                     </div>
                 )}
 
             </Formik>
+
+            {spin ? <Spinner /> : ''}
         </div>
     )
 }
