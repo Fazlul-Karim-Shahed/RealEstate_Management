@@ -1,14 +1,26 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
+const mapStateToProps = (state) => {
+
+  return {
+    authenticated: state.authenticated,
+    decodedToken: state.decodedToken
+  }
+}
+
 export const Profile = (props) => {
+
+
+
   return (
-    <div>Profile</div>
+    <div>
+      {props.decodedToken === null ? '' : props.decodedToken.username}
+    </div>
   )
 }
 
-const mapStateToProps = (state) => ({})
 
-const mapDispatchToProps = {}
 
-export default connect(mapStateToProps, mapDispatchToProps)(Profile)
+
+export default connect(mapStateToProps)(Profile)

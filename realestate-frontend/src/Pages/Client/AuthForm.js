@@ -25,7 +25,7 @@ const AuthForm = (props) => {
     const signUpUrl = process.env.REACT_APP_BACKEND_URL + '/api/user/signup'
 
     return (
-        <div className='pt-5'>
+        <div className='pt-2'>
             <Formik
 
                 initialValues={props.mode === 'signup' ? {
@@ -98,48 +98,58 @@ const AuthForm = (props) => {
                     <div onClick={toggle} className='signup_form_width'>
 
                         <Toast className='w-100 px-2'>
-                            <ToastHeader className=''>{props.mode === 'signin' ? 'Signin form' : 'Sign up form'}</ToastHeader>
+                            <ToastHeader className='text-center'>{props.mode === 'signin' ? <h5 className=''>Login</h5> : <h5>Sign up</h5>}</ToastHeader>
                             <ToastBody>
-                                <form onSubmit={handleSubmit} className='' action="">
-                                    {props.mode === 'signup' ? <InputGroup className='my-3'>
-                                        <InputGroupText><FontAwesomeIcon icon={faUser} /></InputGroupText>
-                                        <Input
-                                            onChange={handleChange}
-                                            value={values.username}
-                                            type='text'
-                                            name='username'
-                                            placeholder='User name'
-                                        />
-                                    </InputGroup> : ''}
-
-                                    <InputGroup className='my-3'>
-                                        <InputGroupText><FontAwesomeIcon icon={faEnvelope} /></InputGroupText>
-                                        <Input
-                                            onChange={handleChange}
-                                            value={values.email}
-                                            type='email'
-                                            name='email'
-                                            placeholder='Email'
-                                        />
-                                    </InputGroup>
-
-                                    <InputGroup className='my-3'>
-                                        <InputGroupText> <FontAwesomeIcon icon={faKey} /> </InputGroupText>
-                                        <Input
-                                            onChange={handleChange}
-                                            value={values.password}
-                                            type='text'
-                                            name='password'
-                                            placeholder='Password'
-                                        />
-                                    </InputGroup>
-                                    <div className='text-center text-danger my-2 fw-bolder'>{errorMessage}</div>
-                                    <div className='d-flex justify-content-between'>
-                                        {props.mode === 'signup' ? <span className='mt-2'>Already have an account? <Link to='/signin'>Login</Link></span> : <span className='mt-2'>First time here? <Link to='/signup'>Signup</Link></span>}
-                                        <button className='btn btn-success' type="submit">Submit</button>
+                                <div className="row d-flex align-items-center h-100 flex-md-row flex-column-reverse mt-md-0 mt-3">
+                                    <div className="col-md-5">
+                                        <img src={props.mode === 'signin' ? "/Assets/login.jpg" : "/Assets/signup.png"} className='img-fluid' alt="" />
                                     </div>
+                                    <div className="col-md-7">
+                                        <div className=''>
+                                            <form onSubmit={handleSubmit} className='' action="">
+                                                {props.mode === 'signup' ? <InputGroup className='w-100'>
+                                                    <InputGroupText><FontAwesomeIcon icon={faUser} /></InputGroupText>
+                                                    <Input
+                                                        onChange={handleChange}
+                                                        value={values.username}
+                                                        type='text'
+                                                        name='username'
+                                                        placeholder='User name'
+                                                        className=''
+                                                    />
+                                                </InputGroup> : ''}
 
-                                </form>
+                                                <InputGroup className='my-3'>
+                                                    <InputGroupText><FontAwesomeIcon icon={faEnvelope} /></InputGroupText>
+                                                    <Input
+                                                        onChange={handleChange}
+                                                        value={values.email}
+                                                        type='email'
+                                                        name='email'
+                                                        placeholder='Email'
+                                                    />
+                                                </InputGroup>
+
+                                                <InputGroup className='my-3'>
+                                                    <InputGroupText> <FontAwesomeIcon icon={faKey} /> </InputGroupText>
+                                                    <Input
+                                                        onChange={handleChange}
+                                                        value={values.password}
+                                                        type='text'
+                                                        name='password'
+                                                        placeholder='Password'
+                                                    />
+                                                </InputGroup>
+                                                <div className='text-center text-danger my-2 fw-bolder'>{errorMessage}</div>
+                                                <div className='d-flex justify-content-between'>
+                                                    {props.mode === 'signup' ? <span className='mt-2'>Already have an account? <Link to='/signin'>Login</Link></span> : <span className='mt-2'>First time here? <Link to='/signup'>Signup</Link></span>}
+                                                    <button className='btn btn-primary' type="submit">{props.mode==='signup'? 'Sign up' : 'Sign in'}</button>
+                                                </div>
+
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
                             </ToastBody>
                         </Toast>
 

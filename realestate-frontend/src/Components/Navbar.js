@@ -64,8 +64,8 @@ export const Navbar = (props) => {
 
                             <UncontrolledDropdown className='d-inline'>
 
-                                <DropdownToggle className='bg-transparent border-0 mb-1' caret>
-                                    <span className=''>My Account</span>
+                                <DropdownToggle className='bg-transparent border-0 mb-1 mx-2 nav_a' caret>
+                                    <span className=''>{props.decodedToken.username}</span>
                                 </DropdownToggle>
 
                                 <DropdownMenu>
@@ -108,11 +108,11 @@ export const Navbar = (props) => {
 
                             {props.authenticated ?
 
-                                <div className='text-center mb-3'>
+                                <div className='text-center py-2 mb-3'>
                                     <UncontrolledDropdown direction='' className='d-inline'>
 
                                         <DropdownToggle className='bg-transparent text-dark border-0' caret>
-                                            <span className='h5'>My Account</span>
+                                            <span className='h5'>{props.decodedToken.username}</span>
                                         </DropdownToggle>
 
                                         <DropdownMenu>
