@@ -8,7 +8,6 @@ const adminCheck = async (req, res, next) => {
     try {
 
         const data = await jwt.verify(req.headers.authorization, process.env.SECRET_KEY)
-        console.log(data)
         if (data) {
             const user = await UserSchema.findOne({ email: data.email })
             if (user) {
