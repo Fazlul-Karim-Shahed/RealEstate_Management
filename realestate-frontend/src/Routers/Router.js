@@ -4,15 +4,16 @@ import Home from '../Pages/Client/Home'
 import AdminPanel from '../Pages/Admin/AdminPanel'
 import { Route, Routes } from 'react-router'
 import Properties from '../Pages/Client/Properties'
+import AdminProperties from '../Pages/Admin/AdminProperties'
 import About from '../Pages/Client/About'
 import Contact from '../Pages/Client/Contact'
 import AuthForm from '../Pages/Client/AuthForm'
 import Logout from '../Pages/Client/Logout'
 import Profile from '../Pages/Client/Profile'
+import AdminDashboard from '../Pages/Admin/AdminDashboard'
+import AdminUsers from '../Pages/Admin/AdminUsers'
 
 const mapStateToProps = (state) => {
-
-  console.log(state)
 
   return {
     authenticated: state.authenticated,
@@ -31,7 +32,9 @@ export const Router = (props) => {
       adminRoutes =
 
         <Route path='/admin-panel' element={<AdminPanel />} >
-          {/* <Route path='catalog' element={<AdminCatalog />} /> */}
+          <Route path='dashboard' element={<AdminDashboard />} />
+          <Route path='properties' element={<AdminProperties />} />
+          <Route path='users' element={<AdminUsers />} />
 
         </Route>
 

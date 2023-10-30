@@ -1,23 +1,24 @@
 
 const jwt = require('jsonwebtoken')
-const { User } = require('../Schemas/UserSchema')
+const UserSchema = require('../Schemas/UserSchema')
 
 const adminCheck = async (req, res, next) => {
 
+
     try {
-        // console.log(req.headers.authorization);
-        const data = await jwt.verify(req.headers.authorization, 'SECRET_KEY')
+
+        const data = await jwt.verify(req.headers.authorization, process.env.SECRET_KEY)
+        console.log(data)
         if (data) {
-            const user = await User.findOne({ email: data.email })
+            const user = await UserSchema.findOne({ email: data.email })
             if (user) {
                 if (user.role === 'admin') {
                     req.user = user
-                    console.log('verified')
                     // res.send('Verified')
                     next()
                 }
                 else {
-                    res.send({ message: 'Not admin' , error: true})
+                    res.send({ message: 'Not admin', error: true })
                 }
             }
             else {
@@ -36,4 +37,4 @@ const adminCheck = async (req, res, next) => {
 
 }
 
-module.exports = adminCheck
+module.exports.adminCheck = adminCheck

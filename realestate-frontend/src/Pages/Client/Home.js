@@ -14,7 +14,7 @@ const mapStateToProps = (state) => {
 export const Home = (props) => {
     return (
         <div>
-
+            <div className="bg-dark"><Navbar /></div>
             Home
 
         </div>

@@ -43,7 +43,6 @@ export const App = (props) => {
 
   return (
     <div className="App">
-      <div className="bg-dark"><Navbar /></div>
       <Router />
     </div>
   )

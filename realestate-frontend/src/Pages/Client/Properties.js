@@ -1,9 +1,13 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import Navbar from '../../Components/Navbar'
 
 export const Properties = (props) => {
   return (
-    <div>Properties</div>
+    <div>
+      <div className="bg-dark"><Navbar /></div>
+      Properties
+    </div>
   )
 }
 
