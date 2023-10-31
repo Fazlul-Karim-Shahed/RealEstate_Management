@@ -7,6 +7,9 @@
     "test": "node Server.js",
     "start": "node Server.js"
   },
+  "engines": {
+    "node": ">=16.9"
+  },
   "author": "Koncept Tech",
   "license": "ISC",
   "dependencies": {
