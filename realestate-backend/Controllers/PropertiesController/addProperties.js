@@ -1,10 +1,8 @@
 
 const formidable = require('formidable')
-const fs = require('fs')
-const path = require('path')
+const fs = require('node:fs')
 const { PropertiesSchema } = require('../../Schemas/PropertiesSchema')
 const _ = require('lodash')
-const { checkRequiredFields } = require('../checkRequiredFields')
 
 
 const addProperties = async (req, res) => {
