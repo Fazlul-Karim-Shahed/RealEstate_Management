@@ -1,6 +1,6 @@
 
-const formidable = require('formidable')
-const fs = require('fs')
+// const formidable = require('formidable')
+// const fs = require('fs')
 const { PropertiesSchema } = require('../../Schemas/PropertiesSchema')
 const _ = require('lodash')
 
