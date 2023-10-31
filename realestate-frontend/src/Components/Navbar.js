@@ -8,7 +8,6 @@ import { connect } from 'react-redux';
 
 const mapStateToProps = (state) => {
 
-    console.log(state)
     return {
         authenticated: state.authenticated,
         decodedToken: state.decodedToken
@@ -21,10 +20,15 @@ export const Navbar = (props) => {
     const [open, setOpen] = useState(false)
     const [modalOpen, setModalOpen] = useState(false)
 
+    console.log(window.location.href.indexOf('admin-panel'))
+
 
     window.onscroll = () => {
 
-        if (true) {
+
+
+        if (true && window.location.href.indexOf('admin-panel') === -1) {
+
             if (document.documentElement.scrollTop > 75) {
                 document.getElementById('navbar').classList.add('position-fixed', 'top-0', 'bg-dark', 'w-100')
                 document.getElementById('navbar').style.zIndex = '100'
@@ -110,7 +114,7 @@ export const Navbar = (props) => {
                             {props.authenticated ?
 
                                 <div className='text-center py-2 mb-3'>
-                                    <UncontrolledDropdown direction='' className='d-inline'>
+                                    <UncontrolledDropdown className='d-inline'>
 
                                         <DropdownToggle className='bg-transparent text-dark border-0' caret>
                                             <span className='h5'>{props.decodedToken.username}</span>

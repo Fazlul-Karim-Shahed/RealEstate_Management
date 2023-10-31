@@ -1,4 +1,4 @@
-// require('express-async-errors')
+require('express-async-errors')
 const express = require('express')
 const dotenv = require('dotenv')
 const mongoose = require('mongoose')
@@ -7,6 +7,7 @@ const compression = require('compression')
 const _ = require('lodash')
 const path = require('path')
 const UserRouter = require('./Routers/UserRouter')
+const PropertiesRouter = require('./Routers/PropertiesRouter')
 
 // ------------ Configuration ------------  //
 
@@ -36,13 +37,18 @@ mongoose.connect(DB, {
 
 // ------------ All Routers ------------ //
 app.use('/api/user', UserRouter)
-app.get('/api', (req, res) => res.sendFile(path.resolve('./Server.html')))
+app.use('/api/properties', PropertiesRouter)
+
+app.get('/api', (req, res) => {
+    res.send({ message: 'Hey backend is here!!', error: false })
+    // res.sendFile(path.resolve('./Server.html'))
+})
 
 
 app.use((err, req, res, next) => {
 
     res.status(500).send({ message: 'Something went wrong', error: true, data: _.pick(err, ['messageFormat', 'kind', 'value', 'path', 'valueType']) })
-    
+
 })
 
 // ------------ Server ------------ //

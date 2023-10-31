@@ -2,3 +2,4 @@
 export const CHECK_AUTH = 'CHECK_AUTH'
 export const DECODE_TOKEN = 'DECODE_TOKEN'
 export const GET_ALL_USERS = 'GET_ALL_USERS'
+export const GET_ALL_PROPERTIES = 'GET_ALL_PROPERTIES'

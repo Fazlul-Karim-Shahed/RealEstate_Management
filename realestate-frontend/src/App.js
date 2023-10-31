@@ -4,6 +4,7 @@ import { checkAuth, tokenDecode } from './Functions/AuthFunctions'
 import { CHECK_AUTH, DECODE_TOKEN } from './Redux/ActionTypes'
 import Navbar from './Components/Navbar'
 import Router from './Routers/Router'
+import axios from 'axios'
 
 const mapStateToProps = (state) => {
   return {
@@ -17,6 +18,10 @@ export const App = (props) => {
 
 
   useEffect(() => {
+
+    axios.get(process.env.REACT_APP_BACKEND_URL + '/api').then(data => {
+      // console.log(data.data)
+    })
 
 
     tokenDecode().then(data => {

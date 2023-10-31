@@ -5,7 +5,6 @@ import Navbar from '../../Components/Navbar'
 
 const mapStateToProps = (state) => {
 
-    console.log(state)
     return {
 
     }

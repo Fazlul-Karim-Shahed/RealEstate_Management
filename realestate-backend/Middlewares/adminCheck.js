@@ -1,10 +1,10 @@
 
 const jwt = require('jsonwebtoken')
-const UserSchema = require('../Schemas/UserSchema')
+const { UserSchema } = require('../Schemas/UserSchema')
 
 const adminCheck = async (req, res, next) => {
 
-
+    console.log(req.headers)
     try {
 
         const data = await jwt.verify(req.headers.authorization, process.env.SECRET_KEY)

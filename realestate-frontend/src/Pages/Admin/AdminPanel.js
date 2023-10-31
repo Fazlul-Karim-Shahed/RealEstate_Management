@@ -1,4 +1,4 @@
-import { faCaretRight, faHouse, faHouseCircleCheck, faRightFromBracket, faUserGear } from '@fortawesome/free-solid-svg-icons'
+import { faCaretRight, faCirclePlus, faHouse, faHouseCircleCheck, faRightFromBracket, faUserGear } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import axios from 'axios'
 import React, { useEffect } from 'react'
@@ -19,9 +19,9 @@ export const AdminPanel = (props) => {
 
     useEffect(() => {
 
-        axios.get(process.env.REACT_APP_BACKEND_URL + '/api/user', {
+        axios.get(process.env.REACT_APP_BACKEND_URL + '/api/user/', {
             headers: {
-                authorization: localStorage.getItem(process.env.REACT_APP_LOCAL_TOKEN_NAME)
+                Authorization: localStorage.getItem(process.env.REACT_APP_LOCAL_TOKEN_NAME),
             }
         }).then(data => {
             props.dispatch({
@@ -54,7 +54,7 @@ export const AdminPanel = (props) => {
 
 
 
-            <div className="row m-0">
+            <div className="row m-0 h-100">
                 <div style={{ height: '100vh' }} className="col-2 bg-dark text-white p-0">
 
                     <div className='m-4 pb-2'>
@@ -89,13 +89,20 @@ export const AdminPanel = (props) => {
                                 <span className='ms-auto'> <FontAwesomeIcon icon={faCaretRight} /> </span>
                             </Link>
                         </div>
+
+                        <div className='mb-2'>
+                            <Link to='/admin-panel/properties/add' className='ps-4 d-flex justify-content-between text-decoration-none'>
+                                <span className='text-light'><FontAwesomeIcon icon={faCirclePlus} /> Add Properties</span>
+                                <span className='ms-auto'> <FontAwesomeIcon icon={faCaretRight} /> </span>
+                            </Link>
+                        </div>
                     </div>
 
 
 
 
                 </div>
-                <div className="col-10 p-0">
+                <div className="col-10 p-0 bg-light">
                     <Outlet />
                 </div>
             </div>

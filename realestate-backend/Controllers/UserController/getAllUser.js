@@ -1,6 +1,6 @@
 
 const _ = require('lodash')
-const UserSchema = require('../../Schemas/UserSchema')
+const { UserSchema } = require('../../Schemas/UserSchema')
 
 const getAllUser = async (req, res) => {
 

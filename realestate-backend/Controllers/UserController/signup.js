@@ -1,6 +1,6 @@
 
 const _ = require('lodash')
-const UserSchema = require('../../Schemas/UserSchema')
+const { UserSchema } = require('../../Schemas/UserSchema')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken');
 
