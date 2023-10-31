@@ -1,8 +1,8 @@
 
-// const formidable = require('formidable')
 const fs = require('fs')
 const { PropertiesSchema } = require('../../Schemas/PropertiesSchema')
 const _ = require('lodash')
+const formidable = require('formidable')
 
 
 const addProperties = async (req, res) => {
