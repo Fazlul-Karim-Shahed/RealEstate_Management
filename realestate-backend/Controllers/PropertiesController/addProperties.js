@@ -2,12 +2,12 @@
 const fs = require('fs')
 const { PropertiesSchema } = require('../../Schemas/PropertiesSchema')
 const _ = require('lodash')
-const formidable = require('formidable')
+const { IncomingForm } = require('formidable')
 
 
 const addProperties = async (req, res) => {
 
-    let form = new formidable.IncomingForm()
+    let form = IncomingForm()
     form.keepExtensions = true
 
     form.parse(req, (err, fields, files) => {
