@@ -14,7 +14,9 @@ const addProperties = async (req, res) => {
 
         if (err) {
 
+
             res.send({ message: 'Property upload failed', error: true })
+
         }
         else {
 

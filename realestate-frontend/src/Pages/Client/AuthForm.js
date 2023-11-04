@@ -22,8 +22,8 @@ const AuthForm = (props) => {
     const toggle = () => setSpin(false)
     const navigate = useNavigate()
 
-    const signInUrl = process.env.REACT_APP_BACKEND_URL + '/api/user/signin'
-    const signUpUrl = process.env.REACT_APP_BACKEND_URL + '/api/user/signup'
+    const signInUrl = process.env.REACT_APP_BACKEND_URL + '/api/users/signin'
+    const signUpUrl = process.env.REACT_APP_BACKEND_URL + '/api/users/signup'
 
     return (
         <div>

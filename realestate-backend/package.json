@@ -8,7 +8,7 @@
     "start": "node Server.js"
   },
   "engines": {
-    "node": ">=18.16"
+    "node": ">=18.16.1"
   },
   "author": "Koncept Tech",
   "license": "ISC",

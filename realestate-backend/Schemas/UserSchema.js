@@ -14,8 +14,40 @@ const UserSchema = model('User', Schema({
         type: String,
         default: 'user',
         required: true,
-        enum: ['user', 'admin']
+        enum: ['user', 'admin', 'employee']
+    },
+
+    status: {
+        type: String,
+        default: 'general',
+        required: true,
+        enum: ['shareholder', 'investor', 'general']
+    },
+
+    acceptedShareholder: {
+        type: Boolean,
+        default: false,
+        required: true,
+    },
+
+    acceptedInvestor: {
+        type: Boolean,
+        required: true,
+        default: false
+    },
+
+    tempAdminTime: {
+        type: String,
+        required: true,
+        default: new Date().toLocaleString()
+    },
+
+    accessPermission: {
+        type: [{ permission: String, value: String, type: Object }],
+        required: true,
+        default: [{ permission: 'none', value: 'No permission' }],
     }
+
 
 }, { timestamps: true }))
 

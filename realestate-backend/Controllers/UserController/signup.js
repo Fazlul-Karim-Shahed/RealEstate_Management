@@ -26,7 +26,7 @@ const signup = async (req, res) => {
 
         data = data.save().then(data => {
 
-            const token = jwt.sign(_.pick(data, ['username', 'role', 'email', '_id']), process.env.SECRET_KEY, { expiresIn: '1h' })
+            const token = jwt.sign(_.pick(data, ['username', 'email', 'password', 'role', 'status', 'acceptedShareholder', 'acceptedInvestor', 'tempAdminTime', 'accessPermission', '_id']), process.env.SECRET_KEY, { expiresIn: '1h' })
             res.send({
                 message: 'Registration complete', error: false, value: {
                     token: token

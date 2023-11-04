@@ -1,16 +1,16 @@
 import { faCaretRight, faCirclePlus, faHouse, faHouseCircleCheck, faRightFromBracket, faUserGear } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import axios from 'axios'
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { Link, Outlet } from 'react-router-dom'
-import { GET_ALL_USERS } from '../../Redux/ActionTypes'
+import { GET_ALL_EMPLOYEE, GET_ALL_USERS } from '../../Redux/ActionTypes'
+import { getAllEmployee, getAllUsers } from '../../Functions/AdminPreload'
 
 
 const mapStateToProps = (state) => {
 
-    return{
-        
+    return {
+
     }
 }
 
@@ -19,16 +19,21 @@ export const AdminPanel = (props) => {
 
     useEffect(() => {
 
-        axios.get(process.env.REACT_APP_BACKEND_URL + '/api/user/', {
-            headers: {
-                Authorization: localStorage.getItem(process.env.REACT_APP_LOCAL_TOKEN_NAME),
-            }
-        }).then(data => {
+        getAllUsers().then(data => {
             props.dispatch({
                 type: GET_ALL_USERS,
-                value: data.data.data
+                value: data
             })
         })
+
+        getAllEmployee().then(data => {
+            props.dispatch({
+                type: GET_ALL_EMPLOYEE,
+                value: data
+            })
+        })
+
+
 
 
 
@@ -58,12 +63,10 @@ export const AdminPanel = (props) => {
                 <div style={{ height: '100vh' }} className="col-2 bg-dark text-white p-0">
 
                     <div className='m-4 pb-2'>
-                        <div className='opacity-50 mb-3'>Main</div>
+                        <div className='opacity-50 mb-3'><FontAwesomeIcon icon={faHouse} /> Main</div>
                         <div className='mb-2'>
                             <Link to='/admin-panel/dashboard' className='ps-4 d-flex justify-content-between text-decoration-none'>
-                                <span className='text-light'>
-                                    <FontAwesomeIcon icon={faHouse} /> Dashboard
-                                </span>
+                                <span className='text-light'>Dashboard</span>
                                 <span className='ms-auto'> <FontAwesomeIcon icon={faCaretRight} /> </span>
                             </Link>
                         </div>
@@ -71,10 +74,17 @@ export const AdminPanel = (props) => {
 
 
                     <div className='m-4 pb-2'>
-                        <div className='opacity-50 mb-3'>Users</div>
+                        <div className='opacity-50 mb-3'><FontAwesomeIcon icon={faUserGear} /> Users</div>
                         <div className='mb-2'>
                             <Link to='/admin-panel/users' className='ps-4 d-flex justify-content-between text-decoration-none'>
-                                <span className='text-light'><FontAwesomeIcon icon={faUserGear} /> All users</span>
+                                <span className='text-light'>All users</span>
+                                <span className='ms-auto'> <FontAwesomeIcon icon={faCaretRight} /> </span>
+                            </Link>
+                        </div>
+
+                        <div className='mb-2'>
+                            <Link to='/admin-panel/employee' className='ps-4 d-flex justify-content-between text-decoration-none'>
+                                <span className='text-light'>All employee</span>
                                 <span className='ms-auto'> <FontAwesomeIcon icon={faCaretRight} /> </span>
                             </Link>
                         </div>
@@ -82,17 +92,17 @@ export const AdminPanel = (props) => {
 
 
                     <div className='m-4 pb-2'>
-                        <div className='opacity-50 mb-3'>Property Management</div>
+                        <div className='opacity-50 mb-3'><FontAwesomeIcon icon={faHouseCircleCheck} /> Property Management</div>
                         <div className='mb-2'>
                             <Link to='/admin-panel/properties' className='ps-4 d-flex justify-content-between text-decoration-none'>
-                                <span className='text-light'><FontAwesomeIcon icon={faHouseCircleCheck} /> All Properties</span>
+                                <span className='text-light'>All Properties</span>
                                 <span className='ms-auto'> <FontAwesomeIcon icon={faCaretRight} /> </span>
                             </Link>
                         </div>
 
                         <div className='mb-2'>
                             <Link to='/admin-panel/properties/add' className='ps-4 d-flex justify-content-between text-decoration-none'>
-                                <span className='text-light'><FontAwesomeIcon icon={faCirclePlus} /> Add Properties</span>
+                                <span className='text-light'>Add Properties</span>
                                 <span className='ms-auto'> <FontAwesomeIcon icon={faCaretRight} /> </span>
                             </Link>
                         </div>

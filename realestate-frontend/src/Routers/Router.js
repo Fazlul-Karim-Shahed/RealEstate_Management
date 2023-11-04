@@ -14,6 +14,7 @@ import AdminDashboard from '../Pages/Admin/AdminDashboard'
 import AdminUsers from '../Pages/Admin/AdminUsers'
 import NotFound from '../Pages/Client/NotFound'
 import AdminAddProperties from '../Pages/Admin/AdminAddProperties'
+import AdminAllEmployee from '../Pages/Admin/AdminAllEmployee'
 
 const mapStateToProps = (state) => {
 
@@ -38,6 +39,7 @@ export const Router = (props) => {
           <Route path='properties' element={<AdminAllProperties />} />
           <Route path='properties/add' element={<AdminAddProperties />} />
           <Route path='users' element={<AdminUsers />} />
+          <Route path='employee' element={<AdminAllEmployee />} />
 
         </Route>
 

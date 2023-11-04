@@ -36,12 +36,11 @@ mongoose.connect(DB, {
 
 
 // ------------ All Routers ------------ //
-app.use('/api/user', UserRouter)
+app.use('/api/users', UserRouter)
 app.use('/api/properties', PropertiesRouter)
 
 app.get('/api', (req, res) => {
     res.send({ message: 'Hey backend is here!!', error: false })
-    // res.sendFile(path.resolve('./Server.html'))
 })
 
 
