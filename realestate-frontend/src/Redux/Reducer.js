@@ -1,10 +1,10 @@
-import { CHECK_AUTH, DECODE_TOKEN, GET_ALL_EMPLOYEE, GET_ALL_PROPERTIES, GET_ALL_USERS } from "./ActionTypes"
+import { CHECK_AUTH, DECODE_TOKEN, GET_ALL_EMPLOYEE, GET_ALL_PROPERTIES, GET_ALL_SHAREHOLDER } from "./ActionTypes"
 
 const initialState = {
 
     authenticated: false,
     decodedToken: null,
-    allUsers: [],
+    allShareholder: [],
     allEmployee: [],
     allProperties: []
 
@@ -30,11 +30,11 @@ const Reducer = (state = initialState, action) => {
         }
     }
 
-    if (action.type === GET_ALL_USERS) {
+    if (action.type === GET_ALL_SHAREHOLDER) {
 
         return {
             ...state,
-            allUsers: [...action.value]
+            allShareholder: [...action.value]
         }
     }
 

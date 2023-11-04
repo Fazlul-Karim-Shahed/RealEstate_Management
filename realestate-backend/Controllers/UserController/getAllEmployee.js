@@ -4,7 +4,7 @@ const { UserSchema } = require('../../Schemas/UserSchema')
 
 const getAllEmployee = async (req, res) => {
 
-    let user = await UserSchema.find({ role: 'employee' })
+    let user = await UserSchema.find({ role: 'employee', acceptedByAdmin: true })
 
     if (user.length === 0) {
         res.send({ message: 'No user found', error: true })

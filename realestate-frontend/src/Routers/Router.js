@@ -11,10 +11,12 @@ import AuthForm from '../Pages/Client/AuthForm'
 import Logout from '../Pages/Client/Logout'
 import Profile from '../Pages/Client/Profile'
 import AdminDashboard from '../Pages/Admin/AdminDashboard'
-import AdminUsers from '../Pages/Admin/AdminUsers'
 import NotFound from '../Pages/Client/NotFound'
 import AdminAddProperties from '../Pages/Admin/AdminAddProperties'
 import AdminAllEmployee from '../Pages/Admin/AdminAllEmployee'
+import AdminShareholder from '../Pages/Admin/AdminShareholder'
+import AdminAllPending from '../Pages/Admin/AdminAllPending'
+import AdminAddShareholder from '../Pages/Admin/AdminAddShareholder'
 
 const mapStateToProps = (state) => {
 
@@ -38,8 +40,10 @@ export const Router = (props) => {
           <Route path='dashboard' element={<AdminDashboard />} />
           <Route path='properties' element={<AdminAllProperties />} />
           <Route path='properties/add' element={<AdminAddProperties />} />
-          <Route path='users' element={<AdminUsers />} />
+          <Route path='shareholder' element={<AdminShareholder />} />
           <Route path='employee' element={<AdminAllEmployee />} />
+          <Route path='pending' element={<AdminAllPending />} />
+          <Route path='shareholder/add' element={<AdminAddShareholder />} />
 
         </Route>
 

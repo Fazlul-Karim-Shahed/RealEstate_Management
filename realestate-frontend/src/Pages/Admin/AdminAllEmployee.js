@@ -24,6 +24,7 @@ export const AdminAllEmployee = (props) => {
         <td>{item.status}</td>
         <td><button className=''>View</button></td>
         <td>{item.tempAdminTime}</td>
+        
       </tr>
     )
 
@@ -33,7 +34,8 @@ export const AdminAllEmployee = (props) => {
   return (
     <div>
       <div className="p-2">
-        <h5 className='mt-3'>Total Employee: {props.allEmployee.length}</h5> <br /><br />
+        <h5 className='mt-3'>Total Employee: {props.allEmployee.length}</h5> 
+        <button className='btn btn-danger px-3 my-3'>Add New Employee</button>
         <Table hover>
           <thead>
             <tr>
@@ -43,6 +45,7 @@ export const AdminAllEmployee = (props) => {
               <th>Status</th>
               <th>Access Permission</th>
               <th>Access Time End</th>
+              <th></th>
             </tr>
           </thead>
 

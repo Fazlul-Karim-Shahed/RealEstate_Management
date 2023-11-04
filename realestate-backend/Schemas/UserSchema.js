@@ -36,6 +36,12 @@ const UserSchema = model('User', Schema({
         default: false
     },
 
+    acceptedByAdmin: {
+        type: Boolean,
+        required: true,
+        default: false
+    },
+
     tempAdminTime: {
         type: String,
         required: true,

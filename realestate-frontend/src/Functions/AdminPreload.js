@@ -1,9 +1,9 @@
 import axios from "axios"
 
 
-export const getAllUsers = async () => {
+export const getAllShareholder = async () => {
 
-    let allUsers = axios.get(process.env.REACT_APP_BACKEND_URL + '/api/users/users', {
+    let allShareholder = axios.get(process.env.REACT_APP_BACKEND_URL + '/api/users/Shareholder', {
         headers: {
             Authorization: localStorage.getItem(process.env.REACT_APP_LOCAL_TOKEN_NAME),
         }
@@ -16,7 +16,7 @@ export const getAllUsers = async () => {
 
 
 
-    return allUsers
+    return allShareholder
 
 }
 

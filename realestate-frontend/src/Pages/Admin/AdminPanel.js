@@ -3,8 +3,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { Link, Outlet } from 'react-router-dom'
-import { GET_ALL_EMPLOYEE, GET_ALL_USERS } from '../../Redux/ActionTypes'
-import { getAllEmployee, getAllUsers } from '../../Functions/AdminPreload'
+import { GET_ALL_EMPLOYEE, GET_ALL_SHAREHOLDER } from '../../Redux/ActionTypes'
+import { getAllEmployee, getAllShareholder } from '../../Functions/AdminPreload'
 
 
 const mapStateToProps = (state) => {
@@ -19,9 +19,9 @@ export const AdminPanel = (props) => {
 
     useEffect(() => {
 
-        getAllUsers().then(data => {
+        getAllShareholder().then(data => {
             props.dispatch({
-                type: GET_ALL_USERS,
+                type: GET_ALL_SHAREHOLDER,
                 value: data
             })
         })
@@ -75,16 +75,23 @@ export const AdminPanel = (props) => {
 
                     <div className='m-4 pb-2'>
                         <div className='opacity-50 mb-3'><FontAwesomeIcon icon={faUserGear} /> Users</div>
+
                         <div className='mb-2'>
-                            <Link to='/admin-panel/users' className='ps-4 d-flex justify-content-between text-decoration-none'>
-                                <span className='text-light'>All users</span>
+                            <Link to='/admin-panel/pending' className='ps-4 d-flex justify-content-between text-decoration-none'>
+                                <span className='text-light'>Pending</span>
+                                <span className='ms-auto'> <FontAwesomeIcon icon={faCaretRight} /> </span>
+                            </Link>
+                        </div>
+                        <div className='mb-2'>
+                            <Link to='/admin-panel/shareholder' className='ps-4 d-flex justify-content-between text-decoration-none'>
+                                <span className='text-light'>All Shareholder</span>
                                 <span className='ms-auto'> <FontAwesomeIcon icon={faCaretRight} /> </span>
                             </Link>
                         </div>
 
                         <div className='mb-2'>
                             <Link to='/admin-panel/employee' className='ps-4 d-flex justify-content-between text-decoration-none'>
-                                <span className='text-light'>All employee</span>
+                                <span className='text-light'>All Employee</span>
                                 <span className='ms-auto'> <FontAwesomeIcon icon={faCaretRight} /> </span>
                             </Link>
                         </div>

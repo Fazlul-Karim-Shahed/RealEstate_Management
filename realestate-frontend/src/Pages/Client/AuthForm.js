@@ -146,7 +146,7 @@ const AuthForm = (props) => {
                                                     <div className='text-center text-danger my-2 fw-bolder'>{errorMessage}</div>
                                                     <div className='text-center'>
                                                         <div>
-                                                            {props.mode === 'signup' ? <span className='mt-2'>Already have an account? <Link to='/signin'> Login</Link></span> : <span className='mt-2'>First time here? <Link to='/signup'> Register now</Link></span>}
+                                                            {/* {props.mode === 'signup' ? <span className='mt-2'>Already have an account? <Link to='/signin'> Login</Link></span> : <span className='mt-2'>First time here? <Link to='/signup'> Register now</Link></span>} */}
                                                         </div> <br />
                                                         <button style={props.mode === 'signin' ? { backgroundColor: '#01b399', color: 'white' } : { backgroundColor: '#ff2b4a', color: 'white' }} className='btn px-4 pb-2 submitBtn' type="submit">{props.mode === 'signup' ? 'Register' : 'Login'}</button>
                                                     </div>

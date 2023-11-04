@@ -2,26 +2,27 @@ import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { Form, FormGroup, Input, Label, Modal, ModalBody, ModalHeader, Table } from 'reactstrap'
 import { Permissions } from '../../Functions/Permissions'
+import { Link } from 'react-router-dom'
 
 const mapStateToProps = (state) => {
 
 
   return {
-    allUsers: state.allUsers
+    allShareholder: state.allShareholder
   }
 }
 
-export const AdminUsers = (props) => {
+export const AdminShareholder = (props) => {
 
 
   const [permissionModal, setPermissionModal] = useState(false)
-  const [selectedUser, setSelectedUser] = useState({})
+  const [selectedShareholder, setSelectedShareholder] = useState({})
   const [permissionState, setPermissionState] = useState({})
   const [tempAdminTime, setTempAdminTime] = useState('')
 
   const toggle = (item) => {
     setPermissionModal(!permissionModal)
-    setSelectedUser(item)
+    setSelectedShareholder(item)
   }
 
 
@@ -55,9 +56,9 @@ export const AdminUsers = (props) => {
   }
 
 
-  let allUsersShow
+  let allShareholderShow
 
-  allUsersShow = props.allUsers.map((item, index) => {
+  allShareholderShow = props.allShareholder.map((item, index) => {
 
     return (
       <tr>
@@ -69,6 +70,7 @@ export const AdminUsers = (props) => {
         <td>{item.investor ? '' : 'X'}</td>
         <td><button onClick={() => toggle(item)} className=''>View</button></td>
         <td>{item.tempAdminTime}</td>
+        <td><button>Details</button></td>
       </tr>
     )
 
@@ -77,7 +79,10 @@ export const AdminUsers = (props) => {
 
   return (
     <div className="p-2">
-      <h5 className='mt-3'>Total User: {props.allUsers.length}</h5> <br /><br />
+      <h5 className='mt-3'>Total Shareholder: {props.allShareholder.length}</h5> 
+
+      <button className='btn btn-primary px-3 my-3'><Link to='/admin-panel/shareholder/add' className='text-decoration-none text-white'>Add New Shareholder</Link></button>
+
       <Table hover>
         <thead>
           <tr>
@@ -89,16 +94,17 @@ export const AdminUsers = (props) => {
             <th>Investor</th>
             <th>Access Permission</th>
             <th>Access Time End</th>
+            <th></th>
           </tr>
         </thead>
 
-        <tbody>{allUsersShow}</tbody>
+        <tbody>{allShareholderShow}</tbody>
       </Table>
 
 
 
       <Modal isOpen={permissionModal} toggle={toggle} size='xl'>
-        <ModalHeader toggle={toggle}>Permission for {selectedUser.username}</ModalHeader>
+        <ModalHeader toggle={toggle}>Permission for {selectedShareholder.username}</ModalHeader>
         <ModalBody>
           <Form onSubmit={e => handleSubmit(e)}>
 
@@ -124,4 +130,4 @@ export const AdminUsers = (props) => {
 
 
 
-export default connect(mapStateToProps)(AdminUsers)
+export default connect(mapStateToProps)(AdminShareholder)
