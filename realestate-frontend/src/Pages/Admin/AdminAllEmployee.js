@@ -34,14 +34,12 @@ export const AdminAllEmployee = (props) => {
 
   const permissionModalToggle = (item) => {
 
-
-
-
     setSelectedEmployee(item)
     setPermissionModal(!permissionModal)
 
   }
 
+  console.log(permissionModal)
 
 
   let allEmployeeShow

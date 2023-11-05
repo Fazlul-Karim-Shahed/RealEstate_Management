@@ -18,7 +18,9 @@ export default function AdminEmployeePermissionModal(props) {
     const [tempAdminTime, setTempAdminTime] = useState('')
     const [employeePermission, setEmployeePermission] = useState([])
 
-    // console.log(employeePermission)
+    console.log(employeePermission)
+
+
 
     let handleChange = (e) => {
 
@@ -52,8 +54,6 @@ export default function AdminEmployeePermissionModal(props) {
         console.log(permissionArr, tempAdminTime)
 
 
-
-
         updateEmployeeAccessPermission(props.selectedEmployee._id, permissionArr, tempAdminTime).then(data => {
             console.log(data)
         })
@@ -78,34 +78,47 @@ export default function AdminEmployeePermissionModal(props) {
     }
 
 
+    // document.querySelectorAll('.chk').forEach(item => {
+
+    //     if (checkMatch(item.name)) {
+    //         item.checked = true
+
+    //         console.log(item)
+    //     }
+
+    // })
+
+
+
     return (
         <div>
             {
-                employeePermission.length === 0 ? '' :
 
-                    <Modal isOpen={props.isOpen} toggle={props.toggle} size='xl'>
-                        <ModalHeader toggle={props.toggle}>Permission for {props.selectedEmployee.employeeName}</ModalHeader>
-                        <ModalBody>
-                            <Form onSubmit={e => handleSubmit(e)}>
+                <Modal isOpen={props.isOpen} toggle={props.toggle} size='xl'>
+                    <ModalHeader toggle={props.toggle}>Permission for {props.selectedEmployee.employeeName}</ModalHeader>
+                    <ModalBody>
+                        <Form onSubmit={e => handleSubmit(e)}>
 
-                                {Permissions.map((item, index) => <FormGroup switch>
+                            {Permissions.map((item, index) => <FormGroup switch>
 
-                                    {/* {console.log(item.permission, employeePermission[index])} */}
+                                {console.log(checkMatch(item.permission))}
 
-                                    <Input className='chk' defaultChecked={checkMatch(item.permission)} onChange={e => handleChange(e)} name={item.permission} type="switch" role="switch" />
-                                    <Label for={item.permission}>{item.value}</Label>
+                                <Input className='chk' defaultChecked={checkMatch(item.permission)} onChange={e => handleChange(e)}  name={item.permission} type="switch" role="switch" />
+                                <Label for=''>{item.value}</Label>
 
-                                </FormGroup>)}
+                            </FormGroup>)}
 
-                                <label htmlFor=""></label>
-                                <input required onChange={e => handleChange(e)} className='form-control w-50 mb-4' type="datetime-local" id="tempAdminTime" name="tempAdminTime" />
+                            <label htmlFor="">Admin time: </label>
+                            <input required onChange={e => handleChange(e)} className='form-control w-50 mb-4' type="datetime-local" id="tempAdminTime" name="tempAdminTime" />
 
-                                <div><button type="submit">Submit</button></div>
-                            </Form>
+                            <div><button type="submit">Submit</button></div>
+                        </Form>
 
-                        </ModalBody>
+                    </ModalBody>
 
-                    </Modal>
+                </Modal>
+
+
             }
         </div>
     )
