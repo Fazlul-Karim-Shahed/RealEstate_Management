@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import Navbar from '../../Components/Navbar'
-import { getAllProperties } from '../../Functions/PropertiesFunctions'
+import { getAllProperties } from '../../Api/PropertiesApi'
 import { GET_ALL_PROPERTIES } from '../../Redux/ActionTypes'
 
 

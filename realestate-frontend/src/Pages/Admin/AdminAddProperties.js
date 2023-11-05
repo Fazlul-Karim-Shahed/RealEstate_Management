@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { createFormData } from '../../Functions/createFormData'
-import { adminAddProperties } from '../../Functions/PropertiesFunctions'
+import { adminAddProperties } from '../../Api/PropertiesApi'
 
 
 

@@ -6,14 +6,16 @@ const accessPermissionCheck = permission => {
 
     return async (req, res, next) => {
 
+        // console.log(req)
+
         try {
             const data = await jwt.verify(req.headers.authorization, process.env.SECRET_KEY)
-
-            if(data){
+            
+            if (data) {
 
                 let user = await UserSchema.findOne({ email: data.email })
 
-                if(user){
+                if (user) {
                     if (user.role === 'admin') {
                         req.user = user
                         next()
@@ -63,18 +65,18 @@ const accessPermissionCheck = permission => {
                     }
 
                 }
-                else{
+                else {
                     res.send({ message: 'User not found', error: true });
                 }
 
             }
-            else{
+            else {
                 req.send({ message: 'Not verified', error: true })
             }
 
 
 
-            
+
         }
         catch (err) {
             res.send({ message: 'Something went wrong', error: true });

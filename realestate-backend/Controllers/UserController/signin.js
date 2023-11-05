@@ -16,8 +16,9 @@ const signin = async (req, res) => {
     else {
 
         let checked = await bcrypt.compare(req.body.password, user.password)
+
         if (checked) {
-            const token = jwt.sign(_.pick(user, ['username', 'role', 'email', '_id']), process.env.SECRET_KEY, { expiresIn: '1h' })
+            const token = jwt.sign(_.pick(user, ['username', 'role', 'email', '_id', 'status', 'shareholderId', 'employeeId', 'acceptedByAdmin', 'tempAdminTime', 'accessPermission']), process.env.SECRET_KEY, { expiresIn: '10h' })
             res.send({
                 message: 'Signin compete', error: false, value: {
                     token: token

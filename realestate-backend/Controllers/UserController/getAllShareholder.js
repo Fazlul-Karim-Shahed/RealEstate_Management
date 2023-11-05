@@ -1,18 +1,20 @@
 
 const _ = require('lodash')
-const { UserSchema } = require('../../Schemas/UserSchema')
+const { ShareholderSchema } = require('../../Schemas/ShareholderSchema')
 
 const getAllShareholder = async (req, res) => {
 
-    let user = await UserSchema.find({ role: 'user', acceptedByAdmin: false })
+    let shareholder = await ShareholderSchema.find({ acceptedByAdmin: true })
 
-    if (user.length === 0) {
-        res.send({ message: 'No user found', error: true })
+    console.log(shareholder)
+
+    if (shareholder.length === 0) {
+        res.send({ message: 'No shareholder found', error: true })
     }
 
 
     else {
-        res.send({ message: user.length + ' User found', error: false, data: user })
+        res.send({ message: shareholder.length + ' shareholder found', error: false, data: shareholder })
     }
 
 

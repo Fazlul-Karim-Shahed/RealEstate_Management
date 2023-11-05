@@ -4,7 +4,8 @@ import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { Link, Outlet } from 'react-router-dom'
 import { GET_ALL_EMPLOYEE, GET_ALL_SHAREHOLDER } from '../../Redux/ActionTypes'
-import { getAllEmployee, getAllShareholder } from '../../Functions/AdminPreload'
+import { getAllEmployee } from '../../Api/EmployeeApi'
+import { getAllShareholder } from '../../Api/ShareholderApi'
 
 
 const mapStateToProps = (state) => {
@@ -20,6 +21,7 @@ export const AdminPanel = (props) => {
     useEffect(() => {
 
         getAllShareholder().then(data => {
+            console.log(data)
             props.dispatch({
                 type: GET_ALL_SHAREHOLDER,
                 value: data

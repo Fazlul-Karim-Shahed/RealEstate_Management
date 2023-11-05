@@ -1,35 +1,27 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
-import { adminAddShareholder } from '../../Api/ShareholderApi'
+import { adminAddEmployee } from '../../Api/EmployeeApi'
 import { createFormData } from '../../Functions/createFormData'
 
 
 
 const mapStateToProps = (state) => ({})
 
-export const AdminAddShareholder = (props) => {
+export const AdminAddEmployee = (props) => {
 
 
     const [state, setState] = useState({
 
-        projectName: "",
-        registrationId: '',
-        shareholderName: '',
+        employeeName: '',
         fatherName: '',
         motherName: '',
         dob: '',
-        religion: '',
-        occupation: '',
-        nationality: '',
+        religion: 'Islam',
+        nationality: 'Bangladeshi',
         nidNumber: '',
-        tin: '',
         mobile: '',
         presentAddress: '',
         permanentAddress: '',
-        tower: '',
-        unit: '',
-        flat: '',
-        amountOfLand: ''
     })
 
 
@@ -54,11 +46,11 @@ export const AdminAddShareholder = (props) => {
 
         e.preventDefault()
 
-        console.log(state)
+        adminAddEmployee(createFormData(state)).then(data => {
+            console.log(data)
+        })
 
-        // adminAddShareholder(createFormData(state)).then(data => {
-        //     console.log(data)
-        // })
+        
 
     }
 
@@ -67,32 +59,17 @@ export const AdminAddShareholder = (props) => {
     return (
         <div>
 
-            <h3 className='my-4 text-center'>New Shareholder Registration Form</h3>
+            <h3 className='my-4 text-center'>New Employee Registration Form</h3>
             <div className='container my-5 px-md-5'>
                 <form onSubmit={e => handleSubmit(e)} className='py-5 px-3 bg-white border rounded' action="" method="post">
 
                     <div className="row mx-0 mb-4">
-                        <div className="col-2"><label className='mt-1 fw-bold' htmlFor="">Project Name: </label></div>
-                        <div className="col-9">
-                            <select required onChange={e => handleChange(e)} value={state.projectName} className='form-control' name="projectName" id="">
-                                <option value=''>Select Project Name</option>
-                                <option value="greenValleyProject2">Green Valley, Project-2</option>
-                            </select>
-                        </div>
+                        <div className="col-2"><label className='mt-1 fw-bold' htmlFor="">Employee Name: </label></div>
+                        <div className="col-9"><input placeholder='ie. Md. Fazlul Karim' onChange={e => handleChange(e)} value={state.employeeName} className='form-control' type="text" name='employeeName' id="" /></div>
                     </div>
 
                     <div className="row mx-0 mb-4">
-                        <div className="col-2"><label className='mt-1 fw-bold' htmlFor="">Registration ID: </label></div>
-                        <div className="col-9"><input placeholder='ie. 1, 2, 3-4, 5' required onChange={e => handleChange(e)} value={state.registrationId} className='form-control' type="text" name='registrationId' id="" /></div>
-                    </div>
-
-                    <div className="row mx-0 mb-4">
-                        <div className="col-2"><label className='mt-1 fw-bold' htmlFor="">Shareholder Name: </label></div>
-                        <div className="col-9"><input placeholder='ie. Md. Fazlul Karim' onChange={e => handleChange(e)} value={state.shareholderName} className='form-control' type="text" name='shareholderName' id="" /></div>
-                    </div>
-
-                    <div className="row mx-0 mb-4">
-                        <div className="col-2"><label className='mt-1 fw-bold' htmlFor="">Shareholder Photo: </label></div>
+                        <div className="col-2"><label className='mt-1 fw-bold' htmlFor="">Employee Photo: </label></div>
                         <div className="col-9"><input onChange={e => handleChange(e)} className='form-control' type="file" name='photo' id="" /></div>
                     </div>
 
@@ -114,11 +91,6 @@ export const AdminAddShareholder = (props) => {
                     <div className="row mx-0 mb-4">
                         <div className="col-2"><label className='mt-1 fw-bold' htmlFor="">Religion: </label></div>
                         <div className="col-9"><input onChange={e => handleChange(e)} value={state.religion} className='form-control' type="text" name='religion' id="" /></div>
-                    </div>
-
-                    <div className="row mx-0 mb-4">
-                        <div className="col-2"><label className='mt-1 fw-bold' htmlFor="">Occupation: </label></div>
-                        <div className="col-9"><input onChange={e => handleChange(e)} value={state.occupation} className='form-control' type="text" name='occupation' id="" /></div>
                     </div>
 
                     <div className="row mx-0 mb-4">
@@ -157,26 +129,6 @@ export const AdminAddShareholder = (props) => {
                     </div>
 
                     <div className="row mx-0 mb-4">
-                        <div className="col-2"><label className='mt-1 fw-bold' htmlFor="">Tower: </label></div>
-                        <div className="col-9"><input onChange={e => handleChange(e)} value={state.tower} className='form-control' type="text" name='tower' id="" /></div>
-                    </div>
-
-                    <div className="row mx-0 mb-4">
-                        <div className="col-2"><label className='mt-1 fw-bold' htmlFor="">Unit: </label></div>
-                        <div className="col-9"><input onChange={e => handleChange(e)} value={state.unit} className='form-control' type="text" name='unit' id="" /></div>
-                    </div>
-
-                    <div className="row mx-0 mb-4">
-                        <div className="col-2"><label className='mt-1 fw-bold' htmlFor="">Flat: </label></div>
-                        <div className="col-9"><input onChange={e => handleChange(e)} value={state.flat} className='form-control' type="text" name='flat' id="" /></div>
-                    </div>
-
-                    <div className="row mx-0 mb-4">
-                        <div className="col-2"><label className='mt-1 fw-bold' htmlFor="">Amount of Land: </label></div>
-                        <div className="col-9"><input onChange={e => handleChange(e)} value={state.amountOfLand} className='form-control' type="text" name='amountOfLand' id="" /></div>
-                    </div>
-
-                    <div className="row mx-0 mb-4">
                         <div className="col-2"><label className='mt-1 fw-bold' htmlFor="">Other Attachment: </label></div>
                         <div className="col-9"><input onChange={e => handleChange(e)} className='form-control' type="file" name='attachment' id="" /></div>
                     </div>
@@ -195,4 +147,4 @@ export const AdminAddShareholder = (props) => {
 
 
 
-export default connect(mapStateToProps)(AdminAddShareholder)
+export default connect(mapStateToProps)(AdminAddEmployee)

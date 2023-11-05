@@ -63,13 +63,17 @@ export const AdminShareholder = (props) => {
     return (
       <tr>
         <th scope="row">{index + 1}</th>
-        <td> {item.username}</td>
-        <td>{item.email}</td>
-        <td>{item.status}</td>
-        <td>{item.shareholder ? '' : 'X'}</td>
-        <td>{item.investor ? '' : 'X'}</td>
+        <td> {item.registrationId}</td>
+        <td>{item.projectName}</td>
+        <td>{item.shareholderName}</td>
+        <td>{item.tower}</td>
+        <td>{item.unit}</td>
+        <td>{item.flat}</td>
+        <td>{item.amountOfLand}</td>
+        <td>{item.mobile}</td>
+        <td>{item.nid}</td>
+        <td>{item.tin}</td>
         <td><button onClick={() => toggle(item)} className=''>View</button></td>
-        <td>{item.tempAdminTime}</td>
         <td><button>Details</button></td>
       </tr>
     )
@@ -83,17 +87,21 @@ export const AdminShareholder = (props) => {
 
       <button className='btn btn-primary px-3 my-3'><Link to='/admin-panel/shareholder/add' className='text-decoration-none text-white'>Add New Shareholder</Link></button>
 
-      <Table hover>
+      <Table hover bordered>
         <thead>
           <tr>
             <th>#</th>
-            <th>Username</th>
-            <th>Email</th>
-            <th>Status</th>
-            <th>Shareholder</th>
-            <th>Investor</th>
-            <th>Access Permission</th>
-            <th>Access Time End</th>
+            <th>Registration ID</th>
+            <th>Project</th>
+            <th>Name</th>
+            <th>Tower</th>
+            <th>Unit</th>
+            <th>Flat</th>
+            <th>Land Amount</th>
+            <th>Mobile</th>
+            <th>NID</th>
+            <th>TIN</th>
+            <th>Permission</th>
             <th></th>
           </tr>
         </thead>
@@ -116,7 +124,7 @@ export const AdminShareholder = (props) => {
             </FormGroup>)}
 
             <label htmlFor=""></label>
-            <input  onChange={e => handleChange(e)} type="datetime-local" id="tempAdminTime" name="tempAdminTime" />
+            <input  onChange={e => handleChange(e)} className='form-control w-50 mb-4' type="datetime-local" id="tempAdminTime" name="tempAdminTime" />
 
             <div><button onSubmit={e => handleSubmit(e)} type="submit">Submit</button></div>
           </Form>

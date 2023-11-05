@@ -1,17 +1,17 @@
 
 const _ = require('lodash')
-const { UserSchema } = require('../../Schemas/UserSchema')
+const { EmployeeSchema } = require('../../Schemas/EmployeeSchema')
 
 const getAllEmployee = async (req, res) => {
 
-    let user = await UserSchema.find({ role: 'employee', acceptedByAdmin: true })
+    let employee = await EmployeeSchema.find({ acceptedByAdmin: true })
 
-    if (user.length === 0) {
-        res.send({ message: 'No user found', error: true })
+    if (employee.length === 0) {
+        res.send({ message: 'No employee found', error: true })
     }
 
     else {
-        res.send({ message: user.length + ' User found', error: false, data: user })
+        res.send({ message: employee.length + ' employee found', error: false, data: employee })
     }
 
 

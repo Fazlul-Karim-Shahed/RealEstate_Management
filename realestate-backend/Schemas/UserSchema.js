@@ -24,16 +24,14 @@ const UserSchema = model('User', Schema({
         enum: ['shareholder', 'investor', 'general']
     },
 
-    acceptedShareholder: {
-        type: Boolean,
-        default: false,
-        required: true,
+    shareholderId: {
+        type: Schema.Types.ObjectId,
+        ref: 'Shareholder',
     },
 
-    acceptedInvestor: {
-        type: Boolean,
-        required: true,
-        default: false
+    employeeId: {
+        type: Schema.Types.ObjectId,
+        ref: 'Employee',
     },
 
     acceptedByAdmin: {

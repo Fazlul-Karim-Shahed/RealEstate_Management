@@ -53,7 +53,7 @@ export const Navbar = (props) => {
                 <div className='py-2 d-flex justify-content-between'>
                     <a href='/' className="logo d-flex align-items-center text-decoration-none text-warning">
                         {/* <img className='img-fluid logo' src="/Assets/logo.png" alt="" /> */}
-                        <h4 className='fw-bold'>REMS</h4>
+                        <h4 className='fw-bold'>SR Property</h4>
                     </a>
 
 
@@ -74,7 +74,7 @@ export const Navbar = (props) => {
 
                                 <DropdownMenu>
                                     <DropdownItem><Link className='text-decoration-none nav_a text-dark' to="/profile">Profile</Link></DropdownItem>
-                                    {props.authenticated && props.decodedToken != null && props.decodedToken.role === 'admin' ? <DropdownItem><Link className='text-decoration-none nav_a text-dark' to="/admin-panel">Admin panel</Link></DropdownItem> : ''}
+                                    {props.authenticated && props.decodedToken != null && (props.decodedToken.role === 'admin' || props.decodedToken.role === 'employee') ? <DropdownItem><Link className='text-decoration-none nav_a text-dark' to="/admin-panel">Admin panel</Link></DropdownItem> : ''}
                                     <DropdownItem divider />
                                     <DropdownItem><Link className='text-decoration-none nav_a text-dark' to="/logout">Logout</Link></DropdownItem>
                                 </DropdownMenu>
@@ -123,7 +123,7 @@ export const Navbar = (props) => {
                                         <DropdownMenu>
                                             <DropdownItem><Link onClick={toggle} className='off_canvas_a text-decoration-none h6' to="/profile">Profile</Link></DropdownItem>
 
-                                            {props.authenticated && props.decodedToken != null && props.decodedToken.role === 'admin' ? <DropdownItem><Link onClick={toggle} className='off_canvas_a text-decoration-none h6' to="/admin-panel">Admin Panel</Link></DropdownItem> : ''}
+                                            {props.authenticated && props.decodedToken != null && (props.decodedToken.role === 'admin' || props.decodedToken.role === 'employee') ? <DropdownItem><Link onClick={toggle} className='off_canvas_a text-decoration-none h6' to="/admin-panel">Admin Panel</Link></DropdownItem> : ''}
 
                                             <DropdownItem divider />
                                             <DropdownItem><Link onClick={toggle} className='off_canvas_a text-decoration-none h6' to="/logout">Logout</Link></DropdownItem>

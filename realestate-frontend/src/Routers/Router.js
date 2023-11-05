@@ -17,6 +17,7 @@ import AdminAllEmployee from '../Pages/Admin/AdminAllEmployee'
 import AdminShareholder from '../Pages/Admin/AdminShareholder'
 import AdminAllPending from '../Pages/Admin/AdminAllPending'
 import AdminAddShareholder from '../Pages/Admin/AdminAddShareholder'
+import AdminAddEmployee from '../Pages/Admin/AdminAddEmployee'
 
 const mapStateToProps = (state) => {
 
@@ -32,7 +33,7 @@ export const Router = (props) => {
   let adminRoutes = ''
 
   if (props.authenticated && props.decodedToken && props.decodedToken.hasOwnProperty('role')) {
-    if (props.decodedToken.role === 'admin') {
+    if (props.decodedToken.role === 'admin' || props.decodedToken.role === 'employee') {
 
       adminRoutes =
 
@@ -44,6 +45,7 @@ export const Router = (props) => {
           <Route path='employee' element={<AdminAllEmployee />} />
           <Route path='pending' element={<AdminAllPending />} />
           <Route path='shareholder/add' element={<AdminAddShareholder />} />
+          <Route path='employee/add' element={<AdminAddEmployee />} />
 
         </Route>
 
