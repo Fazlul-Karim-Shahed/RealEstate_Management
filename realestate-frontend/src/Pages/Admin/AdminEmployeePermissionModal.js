@@ -2,53 +2,42 @@ import React, { useEffect, useState } from 'react'
 import { Form, FormGroup, Input, Label, Modal, ModalBody, ModalHeader } from 'reactstrap'
 import { Permissions } from '../../Functions/Permissions'
 import { getAEmployeeSystemAccount, updateEmployeeAccessPermission } from '../../Api/EmployeeApi'
+import { objModifyInArr } from '../../Functions/CustomFunction'
 
 export default function AdminEmployeePermissionModal(props) {
 
+    const [tempAdminTime, setTempAdminTime] = useState('')
+    const [employeePermission, setEmployeePermission] = useState([])
 
 
     useEffect(() => {
         getAEmployeeSystemAccount(props.selectedEmployee._id).then(data => {
-            setEmployeePermission([...data.data.accessPermission])
+
+            let arr = objModifyInArr([...data.data.accessPermission]) // add key 'checked'
+
+            setEmployeePermission(arr)
+
         })
     }, [])
 
 
-    const [permissionState, setPermissionState] = useState({})
-    const [tempAdminTime, setTempAdminTime] = useState('')
-    const [employeePermission, setEmployeePermission] = useState([])
-
-    console.log(employeePermission)
-
-
-
     let handleChange = (e) => {
-
-        if (e.target.type === 'datetime-local') {
-            setTempAdminTime(new Date(e.target.value).toLocaleString())
-        }
-        else {
-            setPermissionState({
-                ...permissionState,
-                [e.target.name]: e.target.checked
-            })
-        }
-
+        setTempAdminTime(new Date(e.target.value).toLocaleString())
     }
 
     let handleSubmit = (e) => {
 
         e.preventDefault()
+
         let permissionArr = []
-        let chk = document.querySelectorAll('.chk')
 
-        for (let i in chk) {
-
-            if (chk[i].checked) {
-                console.log(chk[i].name)
-                Permissions.forEach((item) => item.permission === chk[i].name ? permissionArr.push(item) : '')
+        for (let i in employeePermission) {
+            if (employeePermission[i].checked) {
+                permissionArr.push({
+                    permission: employeePermission[i].permission,
+                    value: employeePermission[i].value
+                })
             }
-
         }
 
         console.log(permissionArr, tempAdminTime)
@@ -61,33 +50,17 @@ export default function AdminEmployeePermissionModal(props) {
     }
 
 
-    const checkMatch = (permission) => {
 
-        let count = 0
-        for (let i in employeePermission) {
-            if (employeePermission[i].permission === permission) {
-                count = count + 1
-                break
-            }
-            else { continue }
-        }
 
-        if (count > 0) return true
-        else return false
+
+    const handleCheck = (e, index) => {
+
+        let arr = [...employeePermission]
+        arr[index].checked = !arr[index].checked
+
+        setEmployeePermission([...arr])
 
     }
-
-
-    // document.querySelectorAll('.chk').forEach(item => {
-
-    //     if (checkMatch(item.name)) {
-    //         item.checked = true
-
-    //         console.log(item)
-    //     }
-
-    // })
-
 
 
     return (
@@ -97,22 +70,33 @@ export default function AdminEmployeePermissionModal(props) {
                 <Modal isOpen={props.isOpen} toggle={props.toggle} size='xl'>
                     <ModalHeader toggle={props.toggle}>Permission for {props.selectedEmployee.employeeName}</ModalHeader>
                     <ModalBody>
-                        <Form onSubmit={e => handleSubmit(e)}>
 
-                            {Permissions.map((item, index) => <FormGroup switch>
+                        <form onSubmit={e => handleSubmit(e)} className='form-check form-switch' action="">
+                            {employeePermission.map((item, index) => {
 
-                                {console.log(checkMatch(item.permission))}
+                                return (
+                                    <div>
+                                        <input
+                                            className='form-check-input'
+                                            checked={employeePermission[index].checked} type="checkbox"
+                                            onChange={e => handleCheck(e, index)}
+                                            role='switch'
+                                            name=""
+                                            id="" />
 
-                                <Input className='chk' defaultChecked={checkMatch(item.permission)} onChange={e => handleChange(e)}  name={item.permission} type="switch" role="switch" />
-                                <Label for=''>{item.value}</Label>
+                                        <label htmlFor="">{item.value}</label>
+                                    </div>
+                                )
 
-                            </FormGroup>)}
+                            })}
 
-                            <label htmlFor="">Admin time: </label>
-                            <input required onChange={e => handleChange(e)} className='form-control w-50 mb-4' type="datetime-local" id="tempAdminTime" name="tempAdminTime" />
+                            <div className='mt-4'>
+                                <label htmlFor="">Pick Date & Time</label>
+                                <input onChange={e => handleChange(e)} type="datetime-local" name="" id="" />
+                            </div>
 
-                            <div><button type="submit">Submit</button></div>
-                        </Form>
+                            <button type="submit">Submit</button>
+                        </form>
 
                     </ModalBody>
 

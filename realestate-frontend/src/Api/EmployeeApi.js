@@ -24,6 +24,8 @@ export const getAllEmployee = async () => {
             Authorization: localStorage.getItem(process.env.REACT_APP_LOCAL_TOKEN_NAME),
         }
     }).then(data => {
+
+        console.log(data.data)
         if (data.data.error) {
             return []
         } else return data.data.data
