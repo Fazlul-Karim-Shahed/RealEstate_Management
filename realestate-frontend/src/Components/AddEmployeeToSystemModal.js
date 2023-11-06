@@ -42,7 +42,7 @@ export default function AddEmployeeToSystemModal(props) {
 
             <Modal isOpen={props.isOpen} toggle={props.toggle} size='lg'>
 
-                <ModalHeader toggle={props.toggle}>Create Employee Account for {props.selectedEmployee.employeeName}</ModalHeader>
+                <ModalHeader toggle={props.toggle}>Create Employee Account for {props.selectedEmployee === undefined ? '' : props.selectedEmployee.employeeName}</ModalHeader>
 
                 <ModalBody>
 

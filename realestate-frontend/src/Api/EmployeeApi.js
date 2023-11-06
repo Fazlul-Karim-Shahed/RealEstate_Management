@@ -23,13 +23,7 @@ export const getAllEmployee = async () => {
         headers: {
             Authorization: localStorage.getItem(process.env.REACT_APP_LOCAL_TOKEN_NAME),
         }
-    }).then(data => {
-
-        console.log(data.data)
-        if (data.data.error) {
-            return []
-        } else return data.data.data
-    })
+    }).then(data => data.data)
 
 
 
@@ -73,6 +67,22 @@ export const getAEmployeeSystemAccount = async (id) => {
 export const updateEmployeeAccessPermission = async (id, arr, time) => {
 
     let data = axios.put(process.env.REACT_APP_BACKEND_URL + '/api/users/employee/permission/' + id, { arr: arr, time: time }, {
+
+        headers: {
+            Authorization: localStorage.getItem(process.env.REACT_APP_LOCAL_TOKEN_NAME),
+        }
+
+    }).then(data => data.data)
+
+
+    return data
+
+}
+
+
+export const approveEmployee = async (id) => {
+
+    let data = axios.put(process.env.REACT_APP_BACKEND_URL + '/api/users/approve/employee/' + id, {}, {
 
         headers: {
             Authorization: localStorage.getItem(process.env.REACT_APP_LOCAL_TOKEN_NAME),

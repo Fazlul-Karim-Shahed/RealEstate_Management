@@ -1,24 +1,25 @@
+
+
 import React, { useEffect, useState } from 'react'
-import { Form, FormGroup, Input, Label, Modal, ModalBody, ModalHeader } from 'reactstrap'
-import { Permissions } from '../../Functions/Permissions'
+import { Modal, ModalBody, ModalHeader } from 'reactstrap'
 import { getAEmployeeSystemAccount, updateEmployeeAccessPermission } from '../../Api/EmployeeApi'
 import { objModifyInArr } from '../../Functions/CustomFunction'
 
 export default function AdminEmployeePermissionModal(props) {
 
+
     const [tempAdminTime, setTempAdminTime] = useState('')
     const [employeePermission, setEmployeePermission] = useState([])
 
-
     useEffect(() => {
-        getAEmployeeSystemAccount(props.selectedEmployee._id).then(data => {
 
-            let arr = objModifyInArr([...data.data.accessPermission]) // add key 'checked'
-
+        if (props.selectedEmployee != null) {
+            let arr = objModifyInArr([...props.selectedEmployee.accessPermission]) // add key 'checked'
             setEmployeePermission(arr)
+        }
 
-        })
-    }, [])
+    }, [props.selectedEmployee])
+
 
 
     let handleChange = (e) => {
@@ -40,16 +41,16 @@ export default function AdminEmployeePermissionModal(props) {
             }
         }
 
-        console.log(permissionArr, tempAdminTime)
 
+        console.log(props.selectedEmployee._id, permissionArr, tempAdminTime)
 
         updateEmployeeAccessPermission(props.selectedEmployee._id, permissionArr, tempAdminTime).then(data => {
-            console.log(data)
-        })
+            if (data.error) throw data.message
+
+            console.log(data.data)
+        }).catch(err => window.alert(err))
 
     }
-
-
 
 
 
@@ -68,35 +69,43 @@ export default function AdminEmployeePermissionModal(props) {
             {
 
                 <Modal isOpen={props.isOpen} toggle={props.toggle} size='xl'>
-                    <ModalHeader toggle={props.toggle}>Permission for {props.selectedEmployee.employeeName}</ModalHeader>
+
+                    <ModalHeader toggle={props.toggle}>Permission for {props.selectedEmployee === null ? '' : props.selectedEmployee.username}</ModalHeader>
                     <ModalBody>
 
-                        <form onSubmit={e => handleSubmit(e)} className='form-check form-switch' action="">
-                            {employeePermission.map((item, index) => {
+                        {
+                            props.selectedEmployee === null ? <h5 className='text-center my-5'>Please add employee to the system</h5> :
 
-                                return (
-                                    <div>
-                                        <input
-                                            className='form-check-input'
-                                            checked={employeePermission[index].checked} type="checkbox"
-                                            onChange={e => handleCheck(e, index)}
-                                            role='switch'
-                                            name=""
-                                            id="" />
+                                <form onSubmit={e => handleSubmit(e)} className='form-check form-switch' action="">
+                                    
+                                    {employeePermission.map((item, index) => {
 
-                                        <label htmlFor="">{item.value}</label>
+                                        return (
+                                            <div>
+                                                <input
+                                                    className='form-check-input'
+                                                    checked={employeePermission[index].checked} type="checkbox"
+                                                    onChange={e => handleCheck(e, index)}
+                                                    role='switch'
+                                                    name=""
+                                                    id="" />
+
+                                                <label htmlFor="">{item.value}</label>
+                                            </div>
+                                        )
+
+                                    })}
+
+                                    <div className='mt-4'>
+                                        <label className='me-3' htmlFor="">Pick Date & Time</label>
+                                        <input className='form-control w-50' required onChange={e => handleChange(e)} type="datetime-local" name="" id="" />
                                     </div>
-                                )
 
-                            })}
-
-                            <div className='mt-4'>
-                                <label htmlFor="">Pick Date & Time</label>
-                                <input onChange={e => handleChange(e)} type="datetime-local" name="" id="" />
-                            </div>
-
-                            <button type="submit">Submit</button>
-                        </form>
+                                    <div className='mt-4'>
+                                        <button type="submit">Submit</button>
+                                    </div>
+                                </form>
+                        }
 
                     </ModalBody>
 
@@ -106,4 +115,8 @@ export default function AdminEmployeePermissionModal(props) {
             }
         </div>
     )
+
 }
+
+
+

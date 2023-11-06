@@ -20,25 +20,6 @@ export const AdminPanel = (props) => {
 
     useEffect(() => {
 
-        getAllShareholder().then(data => {
-            props.dispatch({
-                type: GET_ALL_SHAREHOLDER,
-                value: data
-            })
-        })
-
-        getAllEmployee().then(data => {
-
-            props.dispatch({
-                type: GET_ALL_EMPLOYEE,
-                value: data
-            })
-        })
-
-
-
-
-
     }, [])
 
 

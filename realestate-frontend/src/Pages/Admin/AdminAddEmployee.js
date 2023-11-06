@@ -47,8 +47,8 @@ export const AdminAddEmployee = (props) => {
         e.preventDefault()
 
         adminAddEmployee(createFormData(state)).then(data => {
-            console.log(data)
-        })
+            if (data.error) throw data.message
+        }).catch(err => window.alert(err))
 
         
 

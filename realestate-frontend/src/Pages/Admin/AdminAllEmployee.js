@@ -1,15 +1,13 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { Modal, Table } from 'reactstrap'
-import { addEmployeeSystemAccount } from '../../Api/EmployeeApi'
+import { Modal, ModalBody, ModalHeader, Table } from 'reactstrap'
+import { addEmployeeSystemAccount, getAEmployeeSystemAccount, getAllEmployee } from '../../Api/EmployeeApi'
 import AddEmployeeToSystemModal from '../../Components/AddEmployeeToSystemModal'
 import AdminEmployeePermissionModal from './AdminEmployeePermissionModal'
+import { GET_ALL_EMPLOYEE } from '../../Redux/ActionTypes'
 
 const mapStateToProps = (state) => {
-
-  console.log(state)
-
 
   return {
     allEmployee: state.allEmployee
@@ -24,22 +22,52 @@ export const AdminAllEmployee = (props) => {
   const [addSystemModal, setAddSystemModal] = useState(false)
   const [permissionModal, setPermissionModal] = useState(false)
   const [selectedEmployee, setSelectedEmployee] = useState({})
+  const [employeeSystemInfo, setEmployeeSystemInfo] = useState(null)
 
-  const addSystemToggle = (item) => {
+
+  useEffect(() => {
+
+    getAllEmployee().then(data => {
+      if (data.error) throw data.message
+      props.dispatch({
+        type: GET_ALL_EMPLOYEE,
+        value: data.data
+      })
+    }).catch(err => window.alert(err))
+
+  }, [])
+
+  const addSystemToggle = (e, item) => {
+
+    e.stopPropagation();
+    e.nativeEvent.stopImmediatePropagation();
 
     setSelectedEmployee(item)
     setAddSystemModal(!addSystemModal)
 
   }
 
-  const permissionModalToggle = (item) => {
+  const permissionModalToggle = (e, item) => {
 
-    setSelectedEmployee(item)
+    if (item != undefined) {
+      getAEmployeeSystemAccount(item._id).then(data => {
+
+        if (data.error) throw data.message
+
+        setEmployeeSystemInfo(data.data)
+
+      })
+
+        .catch(err => {
+
+          setEmployeeSystemInfo(null)
+          window.alert(err)
+        })
+    }
+
     setPermissionModal(!permissionModal)
 
   }
-
-  console.log(permissionModal)
 
 
   let allEmployeeShow
@@ -48,8 +76,6 @@ export const AdminAllEmployee = (props) => {
   const addToSystem = item => {
 
     addEmployeeSystemAccount()
-
-
 
   }
 
@@ -61,8 +87,8 @@ export const AdminAllEmployee = (props) => {
         <td> {item.employeeName}</td>
         <td>{item.nidNumber}</td>
         <td>{item.mobile}</td>
-        <td><button onClick={() => permissionModalToggle(item)} className=''>View</button></td>
-        <td>{item.systemAccount ? <span><button>Remove from account</button> <button>Change password</button></span> : <button onClick={() => addSystemToggle(item)}>Add to system</button>}</td>
+        <td><button onClick={(e) => permissionModalToggle(e, item)} className=''>View</button></td>
+        <td>{item.systemAccount ? <span><button>Remove from account</button> <button>Change password</button></span> : <button onClick={(e) => addSystemToggle(e, item)}>Add to system</button>}</td>
         <td><button>Details</button></td>
 
       </tr>
@@ -94,8 +120,9 @@ export const AdminAllEmployee = (props) => {
       </div>
 
 
+      <AdminEmployeePermissionModal isOpen={permissionModal} toggle={permissionModalToggle} selectedEmployee={employeeSystemInfo} />
 
-      {Object.keys(selectedEmployee).length === 0 ? '' : <AdminEmployeePermissionModal isOpen={permissionModal} toggle={permissionModalToggle} selectedEmployee={selectedEmployee} />}
+
       <AddEmployeeToSystemModal isOpen={addSystemModal} toggle={addSystemToggle} selectedEmployee={selectedEmployee} />
 
     </div>

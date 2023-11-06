@@ -65,8 +65,8 @@ export const AdminAddProperties = (props) => {
     e.preventDefault()
 
     adminAddProperties(createFormData(values)).then(data => {
-      console.log(data)
-    })
+      if (data.error) throw data.message
+    }).catch(err => window.alert(err))
 
   }
 

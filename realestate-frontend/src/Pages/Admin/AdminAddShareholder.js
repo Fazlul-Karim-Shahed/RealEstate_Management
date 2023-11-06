@@ -56,9 +56,9 @@ export const AdminAddShareholder = (props) => {
 
         console.log(state)
 
-        // adminAddShareholder(createFormData(state)).then(data => {
-        //     console.log(data)
-        // })
+        adminAddShareholder(createFormData(state)).then(data => {
+            if (data.error) throw data.message
+        }).catch(err => window.alert(err))
 
     }
 

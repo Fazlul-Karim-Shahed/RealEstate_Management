@@ -6,11 +6,9 @@ const accessPermissionCheck = permission => {
 
     return async (req, res, next) => {
 
-        // console.log(req)
-
         try {
             const data = await jwt.verify(req.headers.authorization, process.env.SECRET_KEY)
-            
+
             if (data) {
 
                 let user = await UserSchema.findOne({ email: data.email })
@@ -39,7 +37,6 @@ const accessPermissionCheck = permission => {
 
                         }
 
-
                         if (count > 0) {
 
                             let tempAdminTime = user.tempAdminTime
@@ -50,7 +47,7 @@ const accessPermissionCheck = permission => {
 
                             }
                             else {
-                                res.send({ message: `You are not currently authorized to change decision. Authorization date expired on ${tempAdminTime}`, error: true });
+                                res.send({ message: `You are not currently authorized to view, take or change this decision. Authorization date expired on ${tempAdminTime}`, error: true });
                             }
 
 
@@ -58,7 +55,7 @@ const accessPermissionCheck = permission => {
                         }
 
                         else {
-                            res.send({ message: `You are not currently authorized to change decision`, error: true });
+                            res.send({ message: `You are not currently authorized to view, take or change this decision`, error: true });
                         }
 
 
@@ -79,6 +76,7 @@ const accessPermissionCheck = permission => {
 
         }
         catch (err) {
+            // console.log(err)
             res.send({ message: 'Something went wrong', error: true });
         }
 

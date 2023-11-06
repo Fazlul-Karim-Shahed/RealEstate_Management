@@ -22,13 +22,7 @@ export const getAllShareholder = async () => {
         headers: {
             Authorization: localStorage.getItem(process.env.REACT_APP_LOCAL_TOKEN_NAME),
         }
-    }).then(data => {
-        if (data.data.error) {
-            return []
-        } else return data.data.data
-    })
-
-
+    }).then(data => data.data)
 
 
     return allShareholder
