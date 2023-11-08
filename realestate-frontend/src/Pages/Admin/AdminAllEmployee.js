@@ -87,9 +87,9 @@ export const AdminAllEmployee = (props) => {
         <td> {item.employeeName}</td>
         <td>{item.nidNumber}</td>
         <td>{item.mobile}</td>
-        <td><button onClick={(e) => permissionModalToggle(e, item)} className=''>View</button></td>
-        <td>{item.systemAccount ? <span><button>Remove from account</button> <button>Change password</button></span> : <button onClick={(e) => addSystemToggle(e, item)}>Add to system</button>}</td>
-        <td><button>Details</button></td>
+        <td><button onClick={(e) => permissionModalToggle(e, item)} className='btn btn-secondary'>View</button></td>
+        <td>{item.systemAccount ? <span><button className='mb-2 btn btn-danger btn-sm'>Remove account</button> <br /> <button className='btn btn-warning btn-sm'>Change password</button></span> : <button onClick={(e) => addSystemToggle(e, item)}>Allow system login</button>}</td>
+        <td><button className='btn btn-info'>Details</button></td>
 
       </tr>
     )

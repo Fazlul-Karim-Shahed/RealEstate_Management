@@ -18,7 +18,7 @@ export const adminAddShareholder = (formData) => {
 
 export const getAllShareholder = async () => {
 
-    let allShareholder = axios.get(process.env.REACT_APP_BACKEND_URL + '/api/users/Shareholder', {
+    let allShareholder = axios.get(process.env.REACT_APP_BACKEND_URL + '/api/users/shareholder', {
         headers: {
             Authorization: localStorage.getItem(process.env.REACT_APP_LOCAL_TOKEN_NAME),
         }
@@ -26,6 +26,34 @@ export const getAllShareholder = async () => {
 
 
     return allShareholder
+
+}
+
+export const getOneShareholder = async (id) => {
+
+    let allShareholder = axios.get(process.env.REACT_APP_BACKEND_URL + '/api/users/shareholder/' + id, {
+        headers: {
+            Authorization: localStorage.getItem(process.env.REACT_APP_LOCAL_TOKEN_NAME),
+        }
+    }).then(data => data.data)
+
+
+    return allShareholder
+
+}
+
+export const approveShareholder = async (id) => {
+
+    let data = axios.put(process.env.REACT_APP_BACKEND_URL + '/api/users/approve/shareholder/' + id, {}, {
+
+        headers: {
+            Authorization: localStorage.getItem(process.env.REACT_APP_LOCAL_TOKEN_NAME),
+        }
+
+    }).then(data => data.data)
+
+
+    return data
 
 }
 

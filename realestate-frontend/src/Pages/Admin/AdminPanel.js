@@ -11,7 +11,7 @@ import { getAllShareholder } from '../../Api/ShareholderApi'
 const mapStateToProps = (state) => {
 
     return {
-
+        decodedToken: state.decodedToken
     }
 }
 
@@ -31,7 +31,7 @@ export const AdminPanel = (props) => {
             <div className='bg-warning py-2'>
                 <div className="d-flex container justify-content-between">
                     <div className='fw-bold'>
-                        <div className='d-flex h-100 align-items-center h5 fw-bold'>REMS ADMIN PANEL</div>
+                        <div className='d-flex h-100 align-items-center h5 fw-bold'>SR Property <span className='small ms-2'> ({props.decodedToken.role} panel)</span></div>
                     </div>
                     <div>
                         <Link to='/' className='mx-2 text-decoration-none text-dark btn btn-secondary text-white pb-2'> Leave <FontAwesomeIcon icon={faRightFromBracket} /> </Link>

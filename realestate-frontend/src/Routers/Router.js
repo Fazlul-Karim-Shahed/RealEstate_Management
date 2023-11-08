@@ -18,6 +18,7 @@ import AdminShareholder from '../Pages/Admin/AdminShareholder'
 import AdminAllPending from '../Pages/Admin/AdminAllPending'
 import AdminAddShareholder from '../Pages/Admin/AdminAddShareholder'
 import AdminAddEmployee from '../Pages/Admin/AdminAddEmployee'
+import AdminAddMoneyReceipt from '../Pages/Admin/AdminAddMoneyReceipt'
 
 const mapStateToProps = (state) => {
 
@@ -46,6 +47,7 @@ export const Router = (props) => {
           <Route path='pending' element={<AdminAllPending />} />
           <Route path='shareholder/add' element={<AdminAddShareholder />} />
           <Route path='employee/add' element={<AdminAddEmployee />} />
+          <Route path='shareholder/add-receipt/:id' element={<AdminAddMoneyReceipt />} />
 
         </Route>
 

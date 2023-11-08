@@ -11,6 +11,7 @@ const { updateEmployeePermission } = require('../Controllers/UserController/upda
 const { getPending } = require('../Controllers/UserController/getAllPending')
 const { approveEmployee } = require('../Controllers/UserController/approveEmployee')
 const { approveShareholder } = require('../Controllers/UserController/approveShareholder')
+const { getOneShareholder } = require('../Controllers/UserController/getOneShareholder')
 
 
 const router = require('express').Router()
@@ -22,6 +23,7 @@ router.put('/approve/employee/:employeeId', accessPermissionCheck('approveEmploy
 router.put('/approve/shareholder/:shareholderId', accessPermissionCheck('approveShareholder'), approveShareholder)
 router.post('/shareholder/add', accessPermissionCheck('addShareholder'), addShareholder)
 router.get('/shareholder', accessPermissionCheck('getAllShareholder'), getAllShareholder)
+router.get('/shareholder/:id', accessPermissionCheck('getOneShareholder'), getOneShareholder)
 router.get('/employee', accessPermissionCheck('getAllEmployee'), getAllEmployee)
 router.post('/employee/add', accessPermissionCheck('addEmployee'), addEmployee)
 router.post('/employee/add-system', accessPermissionCheck('addEmployeeSystemAccount'), addEmployeeSystemAccount)

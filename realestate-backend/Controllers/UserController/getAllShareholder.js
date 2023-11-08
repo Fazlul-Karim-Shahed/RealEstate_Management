@@ -6,8 +6,6 @@ const getAllShareholder = async (req, res) => {
 
     let shareholder = await ShareholderSchema.find({ acceptedByAdmin: true })
 
-    console.log(shareholder)
-
     if (shareholder.length === 0) {
         res.send({ message: 'No shareholder found', error: true })
     }
@@ -16,9 +14,6 @@ const getAllShareholder = async (req, res) => {
     else {
         res.send({ message: shareholder.length + ' shareholder found', error: false, data: shareholder })
     }
-
-
-
 
 }
 

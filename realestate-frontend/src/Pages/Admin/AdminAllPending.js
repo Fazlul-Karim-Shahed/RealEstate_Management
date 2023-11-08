@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { getPending } from '../../Api/OtherApi'
 import { Table } from 'reactstrap'
 import { approveEmployee } from '../../Api/EmployeeApi'
+import { approveShareholder } from '../../Api/ShareholderApi'
 
 export const AdminAllPending = (props) => {
 
@@ -25,6 +26,36 @@ export const AdminAllPending = (props) => {
   }, [])
 
 
+  const approve = (str, id) => {
+
+    if (str === 'employee') {
+
+      approveEmployee(id).then(data => {
+
+        if (data.error) throw data.message
+
+        console.log(data)
+
+      })
+        .catch(err => window.alert(err))
+    }
+
+    else {
+      approveShareholder(id).then(data => {
+
+        if (data.error) throw data.message
+
+        console.log(data)
+
+      })
+        .catch(err => window.alert(err))
+    }
+
+  }
+
+
+
+
   let allPendingShareholderShow
 
   allPendingShareholderShow = pendingShareholder.map((item, index) => {
@@ -42,25 +73,12 @@ export const AdminAllPending = (props) => {
         <td>{item.mobile}</td>
         <td>{item.nid}</td>
         <td>{item.tin}</td>
-        <td><button>Approve</button></td>
+        <td><button onClick={() => approve('shareholder', item._id)}>Approve</button></td>
       </tr>
     )
 
   })
 
-
-  const approve = (str, id) => {
-
-    if (str === 'employee') {
-      approveEmployee(id).then(data => {
-        
-        if (data.error) throw data.message
-
-      })
-        .catch(err => window.alert(err))
-    }
-
-  }
 
 
   let allPendingEmployeeShow

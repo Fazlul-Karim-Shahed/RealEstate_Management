@@ -75,17 +75,23 @@ export const AdminShareholder = (props) => {
         <td> {item.registrationId}</td>
         <td>{item.projectName}</td>
         <td>{item.shareholderName}</td>
-        <td>{item.tower}</td>
-        <td>{item.unit}</td>
-        <td>{item.flat}</td>
-        <td>{item.amountOfLand}</td>
+        <td>
+          <span>Tower: {item.tower}</span> <br />
+          <span>Unit: {item.unit}</span> <br />
+          <span>Flat: {item.flat}</span>
+
+        </td>
         <td>{item.mobile}</td>
         <td>{item.nidNumber}</td>
         <td>{item.tin}</td>
-        <td><button>Add Receipt</button><button>View all</button></td>
-        <td>{item.systemAccount ? <span><button>Remove from account</button> <button>Change password</button></span> : <button>Add to system</button>}</td>
-        <td><button className=''>View</button></td>
-        <td><button>Details</button></td>
+
+        <td><button className='mb-2 btn btn-sm btn-outline-warning'><Link className='text-decoration-none text-black' to={`/admin-panel/shareholder/add-receipt/${item._id}`}>Add Receipt</Link></button><br /><button className=' btn btn-sm btn-outline-success'>View all</button></td>
+
+        <td>{item.systemAccount ? <span><button className='mb-2 btn btn-sm btn-danger'>Remove account</button> <br /> <button>Change password</button></span> : <button className=' btn btn-sm btn-outline-primary'>Allow system login</button>}</td>
+
+        <td><button className='btn btn-sm btn-outline-secondary'>View</button></td>
+        <td><button className='btn btn-sm btn-outline-info'>Details</button></td>
+        <td><button className=''>Send Message</button></td>
       </tr>
     )
 
@@ -98,23 +104,21 @@ export const AdminShareholder = (props) => {
 
       <button className='btn btn-primary px-3 my-3'><Link to='/admin-panel/shareholder/add' className='text-decoration-none text-white'>Add New Shareholder</Link></button>
 
-      <Table hover bordered>
+      <Table bordered>
         <thead>
           <tr>
             <th>#</th>
-            <th>Registration ID</th>
-            <th>Project</th>
+            <th> ID</th>
+            <th>Project ID</th>
             <th>Name</th>
-            <th>Tower</th>
-            <th>Unit</th>
-            <th>Flat</th>
-            <th>Land Amount</th>
+            <th>Apartment</th>
             <th>Mobile</th>
             <th>NID</th>
             <th>TIN</th>
             <th>Money Receipt</th>
             <th>Login System</th>
             <th>Permission</th>
+            <th></th>
             <th></th>
           </tr>
         </thead>
