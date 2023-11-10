@@ -30,8 +30,9 @@ export default function AddEmployeeToSystemModal(props) {
             status: 'general',
             employeeId: props.selectedEmployee._id
         }).then(data => {
-            console.log(data)
+            if(data.error) throw data.message
         })
+        .catch(err=>window.alert(err))
 
     }
 

@@ -1,0 +1,208 @@
+[debug] [2023-11-09T20:43:13.636Z] ----------------------------------------------------------------------
+[debug] [2023-11-09T20:43:13.642Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\fazlu\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2023-11-09T20:43:13.644Z] CLI Version:   12.7.0
+[debug] [2023-11-09T20:43:13.645Z] Platform:      win32
+[debug] [2023-11-09T20:43:13.646Z] Node Version:  v18.16.1
+[debug] [2023-11-09T20:43:13.648Z] Time:          Fri Nov 10 2023 02:43:13 GMT+0600 (Bangladesh Standard Time)
+[debug] [2023-11-09T20:43:13.649Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-11-09T20:43:13.659Z] >>> [apiv2][query] GET https://firebase-public.firebaseio.com/cli.json [none]
+[debug] [2023-11-09T20:43:13.882Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-11-09T20:43:13.884Z] > authorizing via signed-in user (fazlul.karim1@northsouth.edu)
+[debug] [2023-11-09T20:43:13.885Z] [iam] checking project real-estate123 for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2023-11-09T20:43:13.888Z] > refreshing access token with scopes: []
+[debug] [2023-11-09T20:43:13.891Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2023-11-09T20:43:13.891Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2023-11-09T20:43:28.093Z] <<< [apiv2][status] GET https://firebase-public.firebaseio.com/cli.json 200
+[debug] [2023-11-09T20:43:28.094Z] <<< [apiv2][body] GET https://firebase-public.firebaseio.com/cli.json {"cloudBuildErrorAfter":1594252800000,"cloudBuildWarnAfter":1590019200000,"defaultNode10After":1594252800000,"minVersion":"3.0.5","node8DeploysDisabledAfter":1613390400000,"node8RuntimeDisabledAfter":1615809600000,"node8WarnAfter":1600128000000}
+[debug] [2023-11-09T20:43:30.112Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2023-11-09T20:43:30.112Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2023-11-09T20:43:30.132Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/real-estate123:testIamPermissions [none]
+[debug] [2023-11-09T20:43:30.132Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/real-estate123:testIamPermissions x-goog-quota-user=projects/real-estate123
+[debug] [2023-11-09T20:43:30.132Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/real-estate123:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2023-11-09T20:43:47.341Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/real-estate123:testIamPermissions 200
+[debug] [2023-11-09T20:43:47.342Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/real-estate123:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2023-11-09T20:43:47.346Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/real-estate123 [none]
+[debug] [2023-11-09T20:43:57.577Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/real-estate123 200
+[debug] [2023-11-09T20:43:57.577Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/real-estate123 {"projectId":"real-estate123","projectNumber":"359830671945","displayName":"realestate","name":"projects/real-estate123","resources":{"hostingSite":"real-estate123"},"state":"ACTIVE","etag":"1_2de90fa2-a143-4cc1-8cf6-d961b43f594c"}
+[info] 
+[info] === Deploying to 'real-estate123'...
+[info] 
+[info] i  deploying hosting 
+[debug] [2023-11-09T20:43:57.597Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/real-estate123/versions [none]
+[debug] [2023-11-09T20:43:57.597Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/real-estate123/versions {"status":"CREATED","labels":{"deployment-tool":"cli-firebase"}}
+[debug] [2023-11-09T20:44:06.567Z] <<< [apiv2][status] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/real-estate123/versions 200
+[debug] [2023-11-09T20:44:06.567Z] <<< [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/real-estate123/versions {"name":"projects/359830671945/sites/real-estate123/versions/0b6191692c8a509c","status":"CREATED","config":{},"labels":{"deployment-tool":"cli-firebase"}}
+[info] i  hosting[real-estate123]: beginning deploy... 
+[info] i  hosting[real-estate123]: found 10 files in build 
+[debug] [2023-11-09T20:44:06.599Z] [hosting] uploading with 200 concurrency
+[debug] [2023-11-09T20:44:07.471Z] [hosting] hash cache [YnVpbGQ] stored for 10 files
+[debug] [2023-11-09T20:44:07.472Z] [hosting][hash queue][FINAL] {"max":856,"min":4,"avg":119.7,"active":0,"complete":10,"success":10,"errored":0,"retried":0,"total":10,"elapsed":867}
+[debug] [2023-11-09T20:44:07.473Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/projects/359830671945/sites/real-estate123/versions/0b6191692c8a509c:populateFiles [none]
+[debug] [2023-11-09T20:44:07.473Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/359830671945/sites/real-estate123/versions/0b6191692c8a509c:populateFiles {"files":{"/Assets/login.jpg":"28fabf0187f82c6bef57c444e7337130256156f0d59cfafe85c1fa36e39c70c0","/Assets/signup.png":"1a0245f6084cc8e5bac9256172ffe31911bcec376748f2b0addc65cf68a49874","/asset-manifest.json":"2e6e418d9e67d5abbfe3ed934af9fbf565bcb649a9b7a93e1932716f87823513","/index.html":"c5b20fb2d9d66b83ac3bc967661a3b3c88b519ff8fb5fc7767d416a1785099b9","/static/js/main.3361eccb.js.LICENSE.txt":"b4a64a880fdab1bd6d07ed2a5354c88fc8975ef64c3a3466e1472d06b46e2c62","/Assets/logo.png":"831a46e990c5f55380f85884a2f90e3a25290b6ea0ebc2af661105e3773aba21","/static/css/main.bc6efca6.css":"37d852d15788b1455ea29df34ca3b5c33b9479fc0602e7178d1c6b40f334eb1c","/static/js/main.3361eccb.js":"5b35115cdf97fc9437b68b83c903e0636b289e8aa9bd7a03334c3f0a07745caf","/static/css/main.bc6efca6.css.map":"228aa4b31e5fbecb49b50ccfa0c48ab67ad9970846385281efd9923f9cb44a81","/static/js/main.3361eccb.js.map":"bcecaff6328d0932b5f3b3862b57eae03d7a49908fb3e6119f992de5698aa4bb"}}
+[debug] [2023-11-09T20:44:15.513Z] <<< [apiv2][status] POST https://firebasehosting.googleapis.com/v1beta1/projects/359830671945/sites/real-estate123/versions/0b6191692c8a509c:populateFiles 200
+[debug] [2023-11-09T20:44:15.513Z] <<< [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/359830671945/sites/real-estate123/versions/0b6191692c8a509c:populateFiles {"uploadRequiredHashes":["5b35115cdf97fc9437b68b83c903e0636b289e8aa9bd7a03334c3f0a07745caf","228aa4b31e5fbecb49b50ccfa0c48ab67ad9970846385281efd9923f9cb44a81","bcecaff6328d0932b5f3b3862b57eae03d7a49908fb3e6119f992de5698aa4bb","2e6e418d9e67d5abbfe3ed934af9fbf565bcb649a9b7a93e1932716f87823513","831a46e990c5f55380f85884a2f90e3a25290b6ea0ebc2af661105e3773aba21","c5b20fb2d9d66b83ac3bc967661a3b3c88b519ff8fb5fc7767d416a1785099b9","37d852d15788b1455ea29df34ca3b5c33b9479fc0602e7178d1c6b40f334eb1c"],"uploadUrl":"https://upload-firebasehosting.googleapis.com/upload/sites/real-estate123/versions/0b6191692c8a509c/files"}
+[debug] [2023-11-09T20:44:15.518Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/real-estate123/versions/0b6191692c8a509c/files/5b35115cdf97fc9437b68b83c903e0636b289e8aa9bd7a03334c3f0a07745caf [none]
+[debug] [2023-11-09T20:44:15.518Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/real-estate123/versions/0b6191692c8a509c/files/5b35115cdf97fc9437b68b83c903e0636b289e8aa9bd7a03334c3f0a07745caf [stream]
+[debug] [2023-11-09T20:44:15.522Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/real-estate123/versions/0b6191692c8a509c/files/228aa4b31e5fbecb49b50ccfa0c48ab67ad9970846385281efd9923f9cb44a81 [none]
+[debug] [2023-11-09T20:44:15.522Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/real-estate123/versions/0b6191692c8a509c/files/228aa4b31e5fbecb49b50ccfa0c48ab67ad9970846385281efd9923f9cb44a81 [stream]
+[debug] [2023-11-09T20:44:15.525Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/real-estate123/versions/0b6191692c8a509c/files/bcecaff6328d0932b5f3b3862b57eae03d7a49908fb3e6119f992de5698aa4bb [none]
+[debug] [2023-11-09T20:44:15.526Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/real-estate123/versions/0b6191692c8a509c/files/bcecaff6328d0932b5f3b3862b57eae03d7a49908fb3e6119f992de5698aa4bb [stream]
+[debug] [2023-11-09T20:44:15.529Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/real-estate123/versions/0b6191692c8a509c/files/2e6e418d9e67d5abbfe3ed934af9fbf565bcb649a9b7a93e1932716f87823513 [none]
+[debug] [2023-11-09T20:44:15.529Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/real-estate123/versions/0b6191692c8a509c/files/2e6e418d9e67d5abbfe3ed934af9fbf565bcb649a9b7a93e1932716f87823513 [stream]
+[debug] [2023-11-09T20:44:15.533Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/real-estate123/versions/0b6191692c8a509c/files/831a46e990c5f55380f85884a2f90e3a25290b6ea0ebc2af661105e3773aba21 [none]
+[debug] [2023-11-09T20:44:15.533Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/real-estate123/versions/0b6191692c8a509c/files/831a46e990c5f55380f85884a2f90e3a25290b6ea0ebc2af661105e3773aba21 [stream]
+[debug] [2023-11-09T20:44:15.537Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/real-estate123/versions/0b6191692c8a509c/files/c5b20fb2d9d66b83ac3bc967661a3b3c88b519ff8fb5fc7767d416a1785099b9 [none]
+[debug] [2023-11-09T20:44:15.537Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/real-estate123/versions/0b6191692c8a509c/files/c5b20fb2d9d66b83ac3bc967661a3b3c88b519ff8fb5fc7767d416a1785099b9 [stream]
+[debug] [2023-11-09T20:44:15.540Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/real-estate123/versions/0b6191692c8a509c/files/37d852d15788b1455ea29df34ca3b5c33b9479fc0602e7178d1c6b40f334eb1c [none]
+[debug] [2023-11-09T20:44:15.541Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/real-estate123/versions/0b6191692c8a509c/files/37d852d15788b1455ea29df34ca3b5c33b9479fc0602e7178d1c6b40f334eb1c [stream]
+[debug] [2023-11-09T20:44:15.544Z] [hosting][populate queue][FINAL] {"max":8049,"min":8049,"avg":8049,"active":0,"complete":1,"success":1,"errored":0,"retried":0,"total":1,"elapsed":8075}
+[debug] [2023-11-09T20:44:15.544Z] [hosting] uploads queued: 7
+[debug] [2023-11-09T20:44:26.986Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/real-estate123/versions/0b6191692c8a509c/files/2e6e418d9e67d5abbfe3ed934af9fbf565bcb649a9b7a93e1932716f87823513 200
+[debug] [2023-11-09T20:44:26.987Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/real-estate123/versions/0b6191692c8a509c/files/2e6e418d9e67d5abbfe3ed934af9fbf565bcb649a9b7a93e1932716f87823513 [stream]
+[debug] [2023-11-09T20:44:27.234Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/real-estate123/versions/0b6191692c8a509c/files/831a46e990c5f55380f85884a2f90e3a25290b6ea0ebc2af661105e3773aba21 200
+[debug] [2023-11-09T20:44:27.235Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/real-estate123/versions/0b6191692c8a509c/files/831a46e990c5f55380f85884a2f90e3a25290b6ea0ebc2af661105e3773aba21 [stream]
+[debug] [2023-11-09T20:44:27.517Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/real-estate123/versions/0b6191692c8a509c/files/c5b20fb2d9d66b83ac3bc967661a3b3c88b519ff8fb5fc7767d416a1785099b9 200
+[debug] [2023-11-09T20:44:27.517Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/real-estate123/versions/0b6191692c8a509c/files/c5b20fb2d9d66b83ac3bc967661a3b3c88b519ff8fb5fc7767d416a1785099b9 [stream]
+[debug] [2023-11-09T20:44:28.760Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/real-estate123/versions/0b6191692c8a509c/files/37d852d15788b1455ea29df34ca3b5c33b9479fc0602e7178d1c6b40f334eb1c 200
+[debug] [2023-11-09T20:44:28.760Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/real-estate123/versions/0b6191692c8a509c/files/37d852d15788b1455ea29df34ca3b5c33b9479fc0602e7178d1c6b40f334eb1c [stream]
+[debug] [2023-11-09T20:44:32.400Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/real-estate123/versions/0b6191692c8a509c/files/228aa4b31e5fbecb49b50ccfa0c48ab67ad9970846385281efd9923f9cb44a81 200
+[debug] [2023-11-09T20:44:32.401Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/real-estate123/versions/0b6191692c8a509c/files/228aa4b31e5fbecb49b50ccfa0c48ab67ad9970846385281efd9923f9cb44a81 [stream]
+[debug] [2023-11-09T20:44:39.717Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/real-estate123/versions/0b6191692c8a509c/files/5b35115cdf97fc9437b68b83c903e0636b289e8aa9bd7a03334c3f0a07745caf 200
+[debug] [2023-11-09T20:44:39.717Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/real-estate123/versions/0b6191692c8a509c/files/5b35115cdf97fc9437b68b83c903e0636b289e8aa9bd7a03334c3f0a07745caf [stream]
+[debug] [2023-11-09T20:44:45.820Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/real-estate123/versions/0b6191692c8a509c/files/bcecaff6328d0932b5f3b3862b57eae03d7a49908fb3e6119f992de5698aa4bb 200
+[debug] [2023-11-09T20:44:45.820Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/real-estate123/versions/0b6191692c8a509c/files/bcecaff6328d0932b5f3b3862b57eae03d7a49908fb3e6119f992de5698aa4bb [stream]
+[debug] [2023-11-09T20:44:45.821Z] [hosting][upload queue][FINAL] {"max":30305,"min":11471,"avg":17118.285714285714,"active":0,"complete":7,"success":7,"errored":0,"retried":0,"total":7,"elapsed":30308}
+[info] +  hosting[real-estate123]: file upload complete 
+[debug] [2023-11-09T20:44:45.822Z] [hosting] deploy completed after 39251ms
+[debug] [2023-11-09T20:44:45.823Z] [
+  {
+    "config": {
+      "public": "build",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ],
+      "site": "real-estate123"
+    },
+    "version": "projects/359830671945/sites/real-estate123/versions/0b6191692c8a509c"
+  }
+]
+[info] i  hosting[real-estate123]: finalizing version... 
+[debug] [2023-11-09T20:44:45.829Z] >>> [apiv2][query] PATCH https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/real-estate123/versions/0b6191692c8a509c updateMask=status%2Cconfig
+[debug] [2023-11-09T20:44:45.830Z] >>> [apiv2][body] PATCH https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/real-estate123/versions/0b6191692c8a509c {"status":"FINALIZED","config":{"rewrites":[{"glob":"**","path":"/index.html"}]}}
+[debug] [2023-11-09T20:44:51.893Z] <<< [apiv2][status] PATCH https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/real-estate123/versions/0b6191692c8a509c 200
+[debug] [2023-11-09T20:44:51.893Z] <<< [apiv2][body] PATCH https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/real-estate123/versions/0b6191692c8a509c {"name":"projects/359830671945/sites/real-estate123/versions/0b6191692c8a509c","status":"FINALIZED","config":{"rewrites":[{"glob":"**","path":"/index.html"}]},"labels":{"deployment-tool":"cli-firebase"},"createTime":"2023-11-09T20:44:03.395395Z","createUser":{"email":"fazlul.karim1@northsouth.edu"},"finalizeTime":"2023-11-09T20:44:49.347578Z","finalizeUser":{"email":"fazlul.karim1@northsouth.edu"}}
+[debug] [2023-11-09T20:44:51.894Z] [hosting] finalized version for real-estate123:[object Object]
+[info] +  hosting[real-estate123]: version finalized 
+[info] i  hosting[real-estate123]: releasing new version... 
+[debug] [2023-11-09T20:44:51.896Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/real-estate123/channels/live/releases versionName=projects%2F359830671945%2Fsites%2Freal-estate123%2Fversions%2F0b6191692c8a509c
+[debug] [2023-11-09T20:44:51.897Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/real-estate123/channels/live/releases {}
+[debug] [2023-11-09T20:44:58.361Z] <<< [apiv2][status] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/real-estate123/channels/live/releases 200
+[debug] [2023-11-09T20:44:58.361Z] <<< [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/real-estate123/channels/live/releases {"name":"projects/359830671945/sites/real-estate123/channels/live/releases/1699562695117000","version":{"name":"projects/359830671945/sites/real-estate123/versions/0b6191692c8a509c","status":"FINALIZED","config":{"rewrites":[{"glob":"**","path":"/index.html"}]},"labels":{"deployment-tool":"cli-firebase"},"createTime":"2023-11-09T20:44:03.395395Z","createUser":{"email":"fazlul.karim1@northsouth.edu","imageUrl":"https://lh3.googleusercontent.com/a/ACg8ocJY46JVZArROlXRvhZoxc8WnKYJe0axneg-wfCCE3srCJU"},"finalizeTime":"2023-11-09T20:44:49.347578Z","finalizeUser":{"email":"fazlul.karim1@northsouth.edu","imageUrl":"https://lh3.googleusercontent.com/a/ACg8ocJY46JVZArROlXRvhZoxc8WnKYJe0axneg-wfCCE3srCJU"}},"type":"DEPLOY","releaseTime":"2023-11-09T20:44:55.117Z","releaseUser":{"email":"fazlul.karim1@northsouth.edu","imageUrl":"https://lh3.googleusercontent.com/a/ACg8ocJY46JVZArROlXRvhZoxc8WnKYJe0axneg-wfCCE3srCJU"}}
+[debug] [2023-11-09T20:44:58.361Z] [hosting] release: {"name":"projects/359830671945/sites/real-estate123/channels/live/releases/1699562695117000","version":{"name":"projects/359830671945/sites/real-estate123/versions/0b6191692c8a509c","status":"FINALIZED","config":{"rewrites":[{"glob":"**","path":"/index.html"}]},"labels":{"deployment-tool":"cli-firebase"},"createTime":"2023-11-09T20:44:03.395395Z","createUser":{"email":"fazlul.karim1@northsouth.edu","imageUrl":"https://lh3.googleusercontent.com/a/ACg8ocJY46JVZArROlXRvhZoxc8WnKYJe0axneg-wfCCE3srCJU"},"finalizeTime":"2023-11-09T20:44:49.347578Z","finalizeUser":{"email":"fazlul.karim1@northsouth.edu","imageUrl":"https://lh3.googleusercontent.com/a/ACg8ocJY46JVZArROlXRvhZoxc8WnKYJe0axneg-wfCCE3srCJU"}},"type":"DEPLOY","releaseTime":"2023-11-09T20:44:55.117Z","releaseUser":{"email":"fazlul.karim1@northsouth.edu","imageUrl":"https://lh3.googleusercontent.com/a/ACg8ocJY46JVZArROlXRvhZoxc8WnKYJe0axneg-wfCCE3srCJU"}}
+[info] +  hosting[real-estate123]: release complete 
+[info] 
+[info] +  Deploy complete! 
+[info] 
+[info] Project Console: https://console.firebase.google.com/project/real-estate123/overview
+[info] Hosting URL: https://real-estate123.web.app
+[debug] [2023-11-09T20:45:14.949Z] Error: Timed out.
+    at Timeout._onTimeout (C:\Users\fazlu\AppData\Roaming\npm\node_modules\firebase-tools\lib\utils.js:254:49)
+    at listOnTimeout (node:internal/timers:569:17)
+    at process.processTimers (node:internal/timers:512:7)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2023-11-09T20:45:30.850Z] ----------------------------------------------------------------------
+[debug] [2023-11-09T20:45:30.853Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\fazlu\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2023-11-09T20:45:30.854Z] CLI Version:   12.7.0
+[debug] [2023-11-09T20:45:30.854Z] Platform:      win32
+[debug] [2023-11-09T20:45:30.854Z] Node Version:  v18.16.1
+[debug] [2023-11-09T20:45:30.856Z] Time:          Fri Nov 10 2023 02:45:30 GMT+0600 (Bangladesh Standard Time)
+[debug] [2023-11-09T20:45:30.856Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-11-09T20:45:30.961Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-11-09T20:45:30.961Z] > authorizing via signed-in user (fazlul.karim1@northsouth.edu)
+[debug] [2023-11-09T20:45:30.962Z] [iam] checking project real-estate123 for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2023-11-09T20:45:30.965Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/real-estate123:testIamPermissions [none]
+[debug] [2023-11-09T20:45:30.965Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/real-estate123:testIamPermissions x-goog-quota-user=projects/real-estate123
+[debug] [2023-11-09T20:45:30.965Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/real-estate123:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2023-11-09T20:45:39.978Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/real-estate123:testIamPermissions 200
+[debug] [2023-11-09T20:45:39.979Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/real-estate123:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2023-11-09T20:45:39.982Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/real-estate123 [none]
+[debug] [2023-11-09T20:45:51.004Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/real-estate123 200
+[debug] [2023-11-09T20:45:51.005Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/real-estate123 {"projectId":"real-estate123","projectNumber":"359830671945","displayName":"realestate","name":"projects/real-estate123","resources":{"hostingSite":"real-estate123"},"state":"ACTIVE","etag":"1_2de90fa2-a143-4cc1-8cf6-d961b43f594c"}
+[info] 
+[info] === Deploying to 'real-estate123'...
+[info] 
+[info] i  deploying hosting 
+[debug] [2023-11-09T20:45:51.023Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/real-estate123/versions [none]
+[debug] [2023-11-09T20:45:51.024Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/real-estate123/versions {"status":"CREATED","labels":{"deployment-tool":"cli-firebase"}}
+[debug] [2023-11-09T20:46:05.368Z] <<< [apiv2][status] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/real-estate123/versions 200
+[debug] [2023-11-09T20:46:05.368Z] <<< [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/real-estate123/versions {"name":"projects/359830671945/sites/real-estate123/versions/9436644a0f6f20be","status":"CREATED","config":{},"labels":{"deployment-tool":"cli-firebase"}}
+[info] i  hosting[real-estate123]: beginning deploy... 
+[info] i  hosting[real-estate123]: found 10 files in build 
+[debug] [2023-11-09T20:46:05.402Z] [hosting] uploading with 200 concurrency
+[debug] [2023-11-09T20:46:05.417Z] [hosting] hash cache [YnVpbGQ] stored for 10 files
+[debug] [2023-11-09T20:46:05.418Z] [hosting][hash queue][FINAL] {"max":5,"min":1,"avg":1,"active":0,"complete":10,"success":10,"errored":0,"retried":0,"total":10,"elapsed":10}
+[debug] [2023-11-09T20:46:05.419Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/projects/359830671945/sites/real-estate123/versions/9436644a0f6f20be:populateFiles [none]
+[debug] [2023-11-09T20:46:05.419Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/359830671945/sites/real-estate123/versions/9436644a0f6f20be:populateFiles {"files":{"/asset-manifest.json":"2e6e418d9e67d5abbfe3ed934af9fbf565bcb649a9b7a93e1932716f87823513","/index.html":"c5b20fb2d9d66b83ac3bc967661a3b3c88b519ff8fb5fc7767d416a1785099b9","/Assets/login.jpg":"28fabf0187f82c6bef57c444e7337130256156f0d59cfafe85c1fa36e39c70c0","/Assets/logo.png":"831a46e990c5f55380f85884a2f90e3a25290b6ea0ebc2af661105e3773aba21","/Assets/signup.png":"1a0245f6084cc8e5bac9256172ffe31911bcec376748f2b0addc65cf68a49874","/static/css/main.bc6efca6.css":"37d852d15788b1455ea29df34ca3b5c33b9479fc0602e7178d1c6b40f334eb1c","/static/css/main.bc6efca6.css.map":"228aa4b31e5fbecb49b50ccfa0c48ab67ad9970846385281efd9923f9cb44a81","/static/js/main.3361eccb.js":"5b35115cdf97fc9437b68b83c903e0636b289e8aa9bd7a03334c3f0a07745caf","/static/js/main.3361eccb.js.LICENSE.txt":"b4a64a880fdab1bd6d07ed2a5354c88fc8975ef64c3a3466e1472d06b46e2c62","/static/js/main.3361eccb.js.map":"bcecaff6328d0932b5f3b3862b57eae03d7a49908fb3e6119f992de5698aa4bb"}}
+[debug] [2023-11-09T20:46:11.770Z] <<< [apiv2][status] POST https://firebasehosting.googleapis.com/v1beta1/projects/359830671945/sites/real-estate123/versions/9436644a0f6f20be:populateFiles 200
+[debug] [2023-11-09T20:46:11.770Z] <<< [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/359830671945/sites/real-estate123/versions/9436644a0f6f20be:populateFiles {"uploadUrl":"https://upload-firebasehosting.googleapis.com/upload/sites/real-estate123/versions/9436644a0f6f20be/files"}
+[debug] [2023-11-09T20:46:11.771Z] [hosting][populate queue][FINAL] {"max":6357,"min":6357,"avg":6357,"active":0,"complete":1,"success":1,"errored":0,"retried":0,"total":1,"elapsed":6357}
+[debug] [2023-11-09T20:46:11.771Z] [hosting] uploads queued: 0
+[debug] [2023-11-09T20:46:11.772Z] [hosting][upload queue][FINAL] {"max":0,"min":9999999999,"avg":0,"active":0,"complete":0,"success":0,"errored":0,"retried":0,"total":0,"elapsed":1699562771772}
+[info] +  hosting[real-estate123]: file upload complete 
+[debug] [2023-11-09T20:46:11.774Z] [hosting] deploy completed after 6401ms
+[debug] [2023-11-09T20:46:11.775Z] [
+  {
+    "config": {
+      "public": "build",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ],
+      "site": "real-estate123"
+    },
+    "version": "projects/359830671945/sites/real-estate123/versions/9436644a0f6f20be"
+  }
+]
+[info] i  hosting[real-estate123]: finalizing version... 
+[debug] [2023-11-09T20:46:11.784Z] >>> [apiv2][query] PATCH https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/real-estate123/versions/9436644a0f6f20be updateMask=status%2Cconfig
+[debug] [2023-11-09T20:46:11.784Z] >>> [apiv2][body] PATCH https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/real-estate123/versions/9436644a0f6f20be {"status":"FINALIZED","config":{"rewrites":[{"glob":"**","path":"/index.html"}]}}
+[debug] [2023-11-09T20:46:20.172Z] <<< [apiv2][status] PATCH https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/real-estate123/versions/9436644a0f6f20be 200
+[debug] [2023-11-09T20:46:20.172Z] <<< [apiv2][body] PATCH https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/real-estate123/versions/9436644a0f6f20be {"name":"projects/359830671945/sites/real-estate123/versions/9436644a0f6f20be","status":"FINALIZED","config":{"rewrites":[{"glob":"**","path":"/index.html"}]},"labels":{"deployment-tool":"cli-firebase"},"createTime":"2023-11-09T20:46:02.024875Z","createUser":{"email":"fazlul.karim1@northsouth.edu"},"finalizeTime":"2023-11-09T20:46:17.857918Z","finalizeUser":{"email":"fazlul.karim1@northsouth.edu"}}
+[debug] [2023-11-09T20:46:20.173Z] [hosting] finalized version for real-estate123:[object Object]
+[info] +  hosting[real-estate123]: version finalized 
+[info] i  hosting[real-estate123]: releasing new version... 
+[debug] [2023-11-09T20:46:20.175Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/real-estate123/channels/live/releases versionName=projects%2F359830671945%2Fsites%2Freal-estate123%2Fversions%2F9436644a0f6f20be
+[debug] [2023-11-09T20:46:20.175Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/real-estate123/channels/live/releases {}
+[debug] [2023-11-09T20:46:28.113Z] <<< [apiv2][status] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/real-estate123/channels/live/releases 200
+[debug] [2023-11-09T20:46:28.114Z] <<< [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/real-estate123/channels/live/releases {"name":"projects/359830671945/sites/real-estate123/channels/live/releases/1699562783280000","version":{"name":"projects/359830671945/sites/real-estate123/versions/9436644a0f6f20be","status":"FINALIZED","config":{"rewrites":[{"glob":"**","path":"/index.html"}]},"labels":{"deployment-tool":"cli-firebase"},"createTime":"2023-11-09T20:46:02.024875Z","createUser":{"email":"fazlul.karim1@northsouth.edu","imageUrl":"https://lh3.googleusercontent.com/a/ACg8ocJY46JVZArROlXRvhZoxc8WnKYJe0axneg-wfCCE3srCJU"},"finalizeTime":"2023-11-09T20:46:17.857918Z","finalizeUser":{"email":"fazlul.karim1@northsouth.edu","imageUrl":"https://lh3.googleusercontent.com/a/ACg8ocJY46JVZArROlXRvhZoxc8WnKYJe0axneg-wfCCE3srCJU"}},"type":"DEPLOY","releaseTime":"2023-11-09T20:46:23.280Z","releaseUser":{"email":"fazlul.karim1@northsouth.edu","imageUrl":"https://lh3.googleusercontent.com/a/ACg8ocJY46JVZArROlXRvhZoxc8WnKYJe0axneg-wfCCE3srCJU"}}
+[debug] [2023-11-09T20:46:28.114Z] [hosting] release: {"name":"projects/359830671945/sites/real-estate123/channels/live/releases/1699562783280000","version":{"name":"projects/359830671945/sites/real-estate123/versions/9436644a0f6f20be","status":"FINALIZED","config":{"rewrites":[{"glob":"**","path":"/index.html"}]},"labels":{"deployment-tool":"cli-firebase"},"createTime":"2023-11-09T20:46:02.024875Z","createUser":{"email":"fazlul.karim1@northsouth.edu","imageUrl":"https://lh3.googleusercontent.com/a/ACg8ocJY46JVZArROlXRvhZoxc8WnKYJe0axneg-wfCCE3srCJU"},"finalizeTime":"2023-11-09T20:46:17.857918Z","finalizeUser":{"email":"fazlul.karim1@northsouth.edu","imageUrl":"https://lh3.googleusercontent.com/a/ACg8ocJY46JVZArROlXRvhZoxc8WnKYJe0axneg-wfCCE3srCJU"}},"type":"DEPLOY","releaseTime":"2023-11-09T20:46:23.280Z","releaseUser":{"email":"fazlul.karim1@northsouth.edu","imageUrl":"https://lh3.googleusercontent.com/a/ACg8ocJY46JVZArROlXRvhZoxc8WnKYJe0axneg-wfCCE3srCJU"}}
+[info] +  hosting[real-estate123]: release complete 
+[info] 
+[info] +  Deploy complete! 
+[info] 
+[info] Project Console: https://console.firebase.google.com/project/real-estate123/overview
+[info] Hosting URL: https://real-estate123.web.app
+[debug] [2023-11-09T20:46:43.071Z] Error: Timed out.
+    at Timeout._onTimeout (C:\Users\fazlu\AppData\Roaming\npm\node_modules\firebase-tools\lib\utils.js:254:49)
+    at listOnTimeout (node:internal/timers:569:17)
+    at process.processTimers (node:internal/timers:512:7)
+[error] 
+[error] Error: An unexpected error has occurred.

@@ -50,10 +50,10 @@ export const Navbar = (props) => {
     return (
         <div id='navbar'>
             <div className='container'>
-                <div className='py-2 d-flex justify-content-between'>
-                    <a href='/' className="logo d-flex align-items-center text-decoration-none text-warning">
-                        {/* <img className='img-fluid logo' src="/Assets/logo.png" alt="" /> */}
-                        <h4 className='fw-bold'>SR Property</h4>
+                <div className='py-1 d-flex justify-content-between'>
+                    <a href='/' className="d-flex align-items-center text-decoration-none text-warning">
+                        <img className='img-fluid w-25' src="/Assets/logo.png" alt="" />
+                        {/* <h4 className='fw-bold'>SR Property</h4> */}
                     </a>
 
 

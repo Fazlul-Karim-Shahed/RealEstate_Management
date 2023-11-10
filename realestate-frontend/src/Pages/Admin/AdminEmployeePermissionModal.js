@@ -70,14 +70,19 @@ export default function AdminEmployeePermissionModal(props) {
 
                 <Modal isOpen={props.isOpen} toggle={props.toggle} size='xl'>
 
-                    <ModalHeader toggle={props.toggle}>Permission for {props.selectedEmployee === null ? '' : props.selectedEmployee.username}</ModalHeader>
+                    <ModalHeader toggle={props.toggle}>
+
+                        Permission for {props.selectedEmployee === null ? '' : props.selectedEmployee.username} <br />
+                        <div className='mt-2 fw-normal small'>Current Permission Time: {props.selectedEmployee === null ? '' : props.selectedEmployee.tempAdminTime}</div>
+
+                    </ModalHeader>
                     <ModalBody>
 
                         {
-                            props.selectedEmployee === null ? <h5 className='text-center my-5'>Please add employee to the system</h5> :
+                            props.selectedEmployee === null ? <h5 className='text-center text-danger fw-bold my-5'>Please add employee to the system</h5> :
 
                                 <form onSubmit={e => handleSubmit(e)} className='form-check form-switch' action="">
-                                    
+
                                     {employeePermission.map((item, index) => {
 
                                         return (
@@ -102,7 +107,7 @@ export default function AdminEmployeePermissionModal(props) {
                                     </div>
 
                                     <div className='mt-4'>
-                                        <button type="submit">Submit</button>
+                                        <button className='btn btn-primary px-4' type="submit">Submit</button>
                                     </div>
                                 </form>
                         }

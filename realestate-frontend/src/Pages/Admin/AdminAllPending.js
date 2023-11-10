@@ -129,7 +129,7 @@ export const AdminAllPending = (props) => {
 
 
 
-      <h4 className='text-center my-5'>Pending Shareholders</h4>
+      <h4 className='text-center my-5'>Pending Employee</h4>
 
       <Table hover bordered>
         <thead>

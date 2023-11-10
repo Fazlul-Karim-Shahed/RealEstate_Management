@@ -4,7 +4,7 @@ export const adminAddEmployee = (formData) => {
 
     console.log(formData)
 
-    let data = axios.post(process.env.REACT_APP_BACKEND_URL + '/api/users/employee/add', formData, {
+    let data = axios.post(process.env.REACT_APP_BACKEND_URL + '/api/employee/add', formData, {
         headers: {
             Authorization: localStorage.getItem(process.env.REACT_APP_LOCAL_TOKEN_NAME)
         }
@@ -19,7 +19,7 @@ export const adminAddEmployee = (formData) => {
 
 export const getAllEmployee = async () => {
 
-    let allEmployee = axios.get(process.env.REACT_APP_BACKEND_URL + '/api/users/employee', {
+    let allEmployee = axios.get(process.env.REACT_APP_BACKEND_URL + '/api/employee/', {
         headers: {
             Authorization: localStorage.getItem(process.env.REACT_APP_LOCAL_TOKEN_NAME),
         }
@@ -35,7 +35,7 @@ export const getAllEmployee = async () => {
 
 export const addEmployeeSystemAccount = async (obj) => {
 
-    let data = axios.post(process.env.REACT_APP_BACKEND_URL + '/api/users/employee/add-system', obj, {
+    let data = axios.post(process.env.REACT_APP_BACKEND_URL + '/api/employee/add-system', obj, {
 
         headers: {
             Authorization: localStorage.getItem(process.env.REACT_APP_LOCAL_TOKEN_NAME),
@@ -50,7 +50,7 @@ export const addEmployeeSystemAccount = async (obj) => {
 
 export const getAEmployeeSystemAccount = async (id) => {
 
-    let data = axios.get(process.env.REACT_APP_BACKEND_URL + '/api/users/employee/system-account/' + id, {
+    let data = axios.get(process.env.REACT_APP_BACKEND_URL + '/api/employee/system-account/' + id, {
 
         headers: {
             Authorization: localStorage.getItem(process.env.REACT_APP_LOCAL_TOKEN_NAME),
@@ -66,7 +66,7 @@ export const getAEmployeeSystemAccount = async (id) => {
 
 export const updateEmployeeAccessPermission = async (id, arr, time) => {
 
-    let data = axios.put(process.env.REACT_APP_BACKEND_URL + '/api/users/employee/permission/' + id, { arr: arr, time: time }, {
+    let data = axios.put(process.env.REACT_APP_BACKEND_URL + '/api/employee/permission/' + id, { arr: arr, time: time }, {
 
         headers: {
             Authorization: localStorage.getItem(process.env.REACT_APP_LOCAL_TOKEN_NAME),
@@ -82,7 +82,7 @@ export const updateEmployeeAccessPermission = async (id, arr, time) => {
 
 export const approveEmployee = async (id) => {
 
-    let data = axios.put(process.env.REACT_APP_BACKEND_URL + '/api/users/approve/employee/' + id, {}, {
+    let data = axios.put(process.env.REACT_APP_BACKEND_URL + '/api/employee/approve/' + id, {}, {
 
         headers: {
             Authorization: localStorage.getItem(process.env.REACT_APP_LOCAL_TOKEN_NAME),

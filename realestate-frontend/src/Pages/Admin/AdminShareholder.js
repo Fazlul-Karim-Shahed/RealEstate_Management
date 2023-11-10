@@ -85,9 +85,17 @@ export const AdminShareholder = (props) => {
         <td>{item.nidNumber}</td>
         <td>{item.tin}</td>
 
-        <td><button className='mb-2 btn btn-sm btn-outline-warning'><Link className='text-decoration-none text-black' to={`/admin-panel/shareholder/add-receipt/${item._id}`}>Add Receipt</Link></button><br /><button className=' btn btn-sm btn-outline-success'>View all</button></td>
+        <td>
+          <button className='mb-2 btn btn-sm btn-outline-warning'><Link className='text-decoration-none text-black' to={`/admin-panel/shareholder/add-receipt/${item._id}`}>Add Receipt</Link></button><br />
+          <Link to={`/admin-panel/shareholder/money-receipt/view-all/${item._id}`}><button className='mb-2 btn btn-sm btn-outline-success'>View all</button> </Link>
+          <button className=' btn btn-sm btn-outline-success'>View summery</button>
+        </td>
 
-        <td>{item.systemAccount ? <span><button className='mb-2 btn btn-sm btn-danger'>Remove account</button> <br /> <button>Change password</button></span> : <button className=' btn btn-sm btn-outline-primary'>Allow system login</button>}</td>
+        <td>
+          {item.systemAccount ? <span><button className='mb-2 btn btn-sm btn-danger'>Remove account</button> <br />
+            <button>Change password</button></span> :
+            <button className=' btn btn-sm btn-outline-primary'>Allow system login</button>}
+        </td>
 
         <td><button className='btn btn-sm btn-outline-secondary'>View</button></td>
         <td><button className='btn btn-sm btn-outline-info'>Details</button></td>
@@ -102,7 +110,8 @@ export const AdminShareholder = (props) => {
     <div className="p-2">
       <h5 className='mt-3'>Total Shareholder: {props.allShareholder.length}</h5>
 
-      <button className='btn btn-primary px-3 my-3'><Link to='/admin-panel/shareholder/add' className='text-decoration-none text-white'>Add New Shareholder</Link></button>
+      <button className='btn btn-primary px-3 my-3 me-4'><Link to='/admin-panel/shareholder/add' className='text-decoration-none text-white'>Add New Shareholder</Link></button>
+      <button className='btn btn-secondary px-3 my-3'><Link to='' className='text-decoration-none text-white'>All payment summery</Link></button>
 
       <Table bordered>
         <thead>

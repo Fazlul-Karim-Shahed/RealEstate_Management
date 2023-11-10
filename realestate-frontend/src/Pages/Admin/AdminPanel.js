@@ -28,13 +28,16 @@ export const AdminPanel = (props) => {
 
     return (
         <div>
-            <div className='bg-warning py-2'>
+            <div style={{ backgroundImage: "linear-gradient(to right, #2d2a62 , black)" }} className='py-2'>
                 <div className="d-flex container justify-content-between">
                     <div className='fw-bold'>
-                        <div className='d-flex h-100 align-items-center h5 fw-bold'>SR Property <span className='small ms-2'> ({props.decodedToken.role} panel)</span></div>
+                        <div className='d-flex h-100 align-items-center h5 fw-bold'>
+                            {/* SR Property <span className='small ms-2'> ({props.decodedToken.role} panel)</span> */}
+                            <img className='img-fluid w-25' src="/Assets/logo.png" alt="" />
+                        </div>
                     </div>
                     <div>
-                        <Link to='/' className='mx-2 text-decoration-none text-dark btn btn-secondary text-white pb-2'> Leave <FontAwesomeIcon icon={faRightFromBracket} /> </Link>
+                        <Link to='/' className='mx-2 text-decoration-none text-dark btn btn-outline-warning btn-sm text-white mt-2 '> <FontAwesomeIcon icon={faRightFromBracket} /> Leave </Link>
                     </div>
                 </div>
             </div>

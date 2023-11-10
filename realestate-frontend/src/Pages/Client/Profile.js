@@ -16,7 +16,7 @@ export const Profile = (props) => {
 
   return (
     <div>
-      <div className="bg-dark"><Navbar /></div>
+      <div style={{ backgroundImage: "linear-gradient(to bottom, #2d2a62, black)" }}><Navbar /></div>
       {props.decodedToken === null ? '' : props.decodedToken.username}
     </div>
   )

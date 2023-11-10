@@ -2,11 +2,6 @@
     transition: 1s;
 }
 
-.logo {
-    width: 220px;
-    margin-top: 3px;
-}
-
 .navbar_threeDot {
     display: none;
 }

@@ -4,7 +4,7 @@ export const adminAddShareholder = (formData) => {
 
     console.log(formData)
 
-    let data = axios.post(process.env.REACT_APP_BACKEND_URL + '/api/users/shareholder/add', formData, {
+    let data = axios.post(process.env.REACT_APP_BACKEND_URL + '/api/shareholder/add', formData, {
         headers: {
             Authorization: localStorage.getItem(process.env.REACT_APP_LOCAL_TOKEN_NAME)
         }
@@ -18,7 +18,7 @@ export const adminAddShareholder = (formData) => {
 
 export const getAllShareholder = async () => {
 
-    let allShareholder = axios.get(process.env.REACT_APP_BACKEND_URL + '/api/users/shareholder', {
+    let allShareholder = axios.get(process.env.REACT_APP_BACKEND_URL + '/api/shareholder/', {
         headers: {
             Authorization: localStorage.getItem(process.env.REACT_APP_LOCAL_TOKEN_NAME),
         }
@@ -31,7 +31,7 @@ export const getAllShareholder = async () => {
 
 export const getOneShareholder = async (id) => {
 
-    let allShareholder = axios.get(process.env.REACT_APP_BACKEND_URL + '/api/users/shareholder/' + id, {
+    let allShareholder = axios.get(process.env.REACT_APP_BACKEND_URL + '/api/shareholder/' + id, {
         headers: {
             Authorization: localStorage.getItem(process.env.REACT_APP_LOCAL_TOKEN_NAME),
         }
@@ -44,7 +44,7 @@ export const getOneShareholder = async (id) => {
 
 export const approveShareholder = async (id) => {
 
-    let data = axios.put(process.env.REACT_APP_BACKEND_URL + '/api/users/approve/shareholder/' + id, {}, {
+    let data = axios.put(process.env.REACT_APP_BACKEND_URL + '/api/shareholder/approve/' + id, {}, {
 
         headers: {
             Authorization: localStorage.getItem(process.env.REACT_APP_LOCAL_TOKEN_NAME),
@@ -57,4 +57,32 @@ export const approveShareholder = async (id) => {
 
 }
 
+export const addShareholderMoneyReceipt = async (id, formData) => {
+
+    let data = axios.post(process.env.REACT_APP_BACKEND_URL + '/api/shareholder/add-money-receipt/' + id, formData, {
+
+        headers: {
+            Authorization: localStorage.getItem(process.env.REACT_APP_LOCAL_TOKEN_NAME),
+        }
+
+    }).then(data => data.data)
+
+
+    return data
+
+}
+
+
+export const getOneShareholderAllMoneyReceipt = async (id) => {
+
+    let allShareholder = axios.get(process.env.REACT_APP_BACKEND_URL + '/api/shareholder/all-money-receipt/' + id, {
+        headers: {
+            Authorization: localStorage.getItem(process.env.REACT_APP_LOCAL_TOKEN_NAME),
+        }
+    }).then(data => data.data)
+
+
+    return allShareholder
+
+}
 
