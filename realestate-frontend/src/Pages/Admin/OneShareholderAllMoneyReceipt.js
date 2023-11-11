@@ -3,6 +3,10 @@ import { connect } from 'react-redux'
 import { useParams } from 'react-router'
 import { getOneShareholderAllMoneyReceipt } from '../../Api/ShareholderApi'
 import { Table } from 'reactstrap'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCircleCheck } from '@fortawesome/free-solid-svg-icons'
+import { convertToText } from 'number-to-text'
+import 'number-to-text/converters/en-us';
 
 export const OneShareholderAllMoneyReceipt = (props) => {
 
@@ -38,15 +42,37 @@ export const OneShareholderAllMoneyReceipt = (props) => {
             <tr>
                 <th scope="row">{index + 1}</th>
                 <td>{item.receivedDate}</td>
-                <td>{index + 1}</td>
                 <td>{item.receiptNo}</td>
-                <td>{item.receivedAmount}</td>
-                <td>{ }</td>
-                <td>{item.paymentMethod}</td>
+                <td>
+                    {item.receivedAmount} <br />
+                    ({convertToText(item.receivedAmount)} Only)
+                </td>
 
-                <td><button className='btn btn-sm btn-outline-secondary'>View</button></td>
-                <td><button className='btn btn-sm btn-outline-info'>Details</button></td>
-                <td><button className=''>Send Message</button></td>
+                <td className='text-center'>{item.paymentMethod === 'cash' ? <FontAwesomeIcon icon={faCircleCheck} /> : '-'}</td>
+
+                <td className='text-center'>{item.paymentMethod === 'check' ?
+                    <div>
+                        <FontAwesomeIcon icon={faCircleCheck} /> <br />
+                        {item.checkNumber}
+                    </div> : '-'}</td>
+
+                <td className='text-center'>{item.paymentMethod === 'bank' ?
+                    <div>
+                        <FontAwesomeIcon icon={faCircleCheck} /> <br />
+                        {item.bankPaymentType} <br />
+                        {item.bankName}
+                    </div> : '-'}</td>
+
+                <td className='text-center'>{item.paymentMethod === 'mfs' ?
+                    <div>
+                        <FontAwesomeIcon icon={faCircleCheck} /> <br />
+                        {item.mfsName} <br />
+                        {item.transactionId}
+                    </div> : '-'}</td>
+
+                <td><button className='btn btn-primary btn-sm'>View slip</button></td>
+                <td><button className='btn btn-outline-danger btn-sm'>Edit</button></td>
+
             </tr>
         )
 
@@ -85,23 +111,31 @@ export const OneShareholderAllMoneyReceipt = (props) => {
 
             <h3 className='text-center my-5'>Money Receipt Details</h3>
 
-            <Table bordered>
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Received Date</th>
-                        <th>Payment No.</th>
-                        <th>Receipt No</th>
-                        <th>Amount Received</th>
-                        <th>TK (In Word)</th>
-                        <th rowSpan='2'>Payment Method</th>
-                        <th></th>
-                        <th></th>
-                    </tr>
-                </thead>
+            <div className='px-2'>
+                <Table className='text-center' bordered>
+                    <thead>
+                        <tr>
+                            <th rowSpan="2">#</th>
+                            <th rowSpan="2">Received Date</th>
+                            <th rowSpan="2">Receipt No.</th>
+                            <th rowSpan="2">Amount Received</th>
+                            <th colSpan="4" className='text-center'>Payment Method</th>
+                            <th rowSpan='2' className='text-center'>Slip</th>
+                            <th rowSpan="2"></th>
+                        </tr>
+                        <tr className='text-center'>
+                            <th>Cash</th>
+                            <th>Check</th>
+                            <th>Bank</th>
+                            <th>MFS</th>
+                        </tr>
 
-                <tbody>{allMoneyReceiptShow}</tbody>
-            </Table>
+
+                    </thead>
+
+                    <tbody>{allMoneyReceiptShow}</tbody>
+                </Table>
+            </div>
         </div>
     )
 }
