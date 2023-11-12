@@ -3,7 +3,6 @@ const { accessPermissionCheck } = require('../Middlewares/accessPermissionCheck'
 const { getAllEmployee } = require('../Controllers/EmployeeController/getAllEmployee')
 const { addEmployee } = require('../Controllers/EmployeeController/AddEmployee')
 const { addEmployeeSystemAccount } = require('../Controllers/EmployeeController/addEmployeeSystemAccount')
-const { getAEmployeeSystemAccount } = require('../Controllers/EmployeeController/getAEmployeeSystemAccount')
 const { updateEmployeePermission } = require('../Controllers/EmployeeController/updateEmployeePermission')
 const { approveEmployee } = require('../Controllers/EmployeeController/approveEmployee')
 
