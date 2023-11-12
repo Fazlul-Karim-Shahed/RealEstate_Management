@@ -24,6 +24,21 @@ export const AdminPanel = (props) => {
 
 
 
+    const handleChange = (e) => {
+
+        if (e.target.checked) {
+
+            document.getElementsByClassName('left_bar')[0].classList.remove('d-none')
+            document.getElementsByClassName('left_bar')[0].classList.add('d-block')
+        }
+
+        else {
+            document.getElementsByClassName('left_bar')[0].classList.remove('d-block')
+            document.getElementsByClassName('left_bar')[0].classList.add('d-none')
+        }
+
+    }
+
 
 
     return (
@@ -37,6 +52,16 @@ export const AdminPanel = (props) => {
                         </div>
                     </div>
                     <div>
+                        <form className='form-check form-switch d-inline' action="">
+                            <input
+                                className='form-check-input mt-3 me-4'
+                                defaultChecked
+                                type="checkbox"
+                                role='switch'
+                                onChange={e => handleChange(e)}
+                                name=""
+                                id="" />
+                        </form>
                         <Link to='/' className='mx-2 text-decoration-none text-dark btn btn-outline-warning btn-sm text-white mt-2 '> <FontAwesomeIcon icon={faRightFromBracket} /> Leave </Link>
                     </div>
                 </div>
@@ -46,7 +71,7 @@ export const AdminPanel = (props) => {
 
 
             <div className="row m-0 h-100">
-                <div style={{ height: '100vh' }} className="col-2 bg-dark text-white p-0">
+                <div style={{ height: '100vh' }} className="col-2 bg-dark text-white p-0 left_bar">
 
                     <div className='m-4 pb-2'>
                         <div className='opacity-50 mb-3'><FontAwesomeIcon icon={faHouse} /> Main</div>
@@ -106,6 +131,8 @@ export const AdminPanel = (props) => {
 
                 </div>
                 <div className="col-10 p-0 bg-light">
+
+                    {/* {window.location.pathname === '/admin-panel' ? 'hey' : <Outlet />} */}
                     <Outlet />
                 </div>
             </div>

@@ -20,6 +20,8 @@ import AdminAddShareholder from '../Pages/Admin/AdminAddShareholder'
 import AdminAddEmployee from '../Pages/Admin/AdminAddEmployee'
 import AdminAddMoneyReceipt from '../Pages/Admin/AdminAddMoneyReceipt'
 import OneShareholderAllMoneyReceipt from '../Pages/Admin/OneShareholderAllMoneyReceipt'
+import OnePaymentSlip from '../Pages/Admin/OnePaymentSlip'
+import ShareholderPaymentSummery from '../Pages/Admin/ShareholderPaymentSummery'
 
 const mapStateToProps = (state) => {
 
@@ -68,6 +70,8 @@ export const Router = (props) => {
         <Route path='/signup' element={<AuthForm mode='signup' />} />
         <Route path='/signin' element={<AuthForm mode='signin' />} />
         <Route path='/logout' element={<Logout />} />
+        <Route path='/shareholder/payment-slip' element={<OnePaymentSlip />} />
+        <Route path='/shareholder/payment-summery' element={<ShareholderPaymentSummery />} />
 
         {adminRoutes}
 

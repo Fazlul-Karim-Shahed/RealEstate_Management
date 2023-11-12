@@ -7,12 +7,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleCheck } from '@fortawesome/free-solid-svg-icons'
 import { convertToText } from 'number-to-text'
 import 'number-to-text/converters/en-us';
+import { Link } from 'react-router-dom'
 
 export const OneShareholderAllMoneyReceipt = (props) => {
 
 
     let { id } = useParams()
     const [allMoneyReceipt, setAllMoneyReceipt] = useState([])
+
 
 
     useEffect(() => {
@@ -31,7 +33,6 @@ export const OneShareholderAllMoneyReceipt = (props) => {
     }, [])
 
     if (allMoneyReceipt.length === 0) return <h3 className='text-center my-5'>No money receipt found</h3>
-
 
 
     let allMoneyReceiptShow
@@ -70,13 +71,34 @@ export const OneShareholderAllMoneyReceipt = (props) => {
                         {item.transactionId}
                     </div> : '-'}</td>
 
-                <td><button className='btn btn-primary btn-sm'>View slip</button></td>
+                <td>
+                    <Link to={`/shareholder/payment-slip`} state={{ moneyReceipt: item }}>
+                        <button className='btn btn-primary btn-sm mb-2'>Print slip</button>
+                    </Link> <br />
+                    <button className='btn btn-success btn-sm'>View attachment</button>
+                </td>
                 <td><button className='btn btn-outline-danger btn-sm'>Edit</button></td>
 
             </tr>
         )
 
     })
+
+
+
+    const sumAmount = () => {
+
+        let sum = 0
+        allMoneyReceipt.forEach(item => {
+            sum = sum + item.receivedAmount
+        })
+
+        console.log(sum)
+        return sum
+
+    }
+
+    sumAmount()
 
 
 
@@ -111,8 +133,18 @@ export const OneShareholderAllMoneyReceipt = (props) => {
 
             <h3 className='text-center my-5'>Money Receipt Details</h3>
 
+            <div>
+                <Link to={`/admin-panel/shareholder/add-receipt/${id}`}>
+                    <button className='btn btn-warning ms-2 mb-3'>Add money receipt</button>
+                </Link>
+
+                <Link to={`/shareholder/payment-summery`} state={{ allMoneyReceipt: allMoneyReceipt }}>
+                    <button className='btn btn-secondary ms-2 mb-3'>Payment summery</button>
+                </Link>
+            </div>
+
             <div className='px-2'>
-                <Table className='text-center' bordered>
+                <Table className='text-center' bordered hover>
                     <thead>
                         <tr>
                             <th rowSpan="2">#</th>
@@ -133,7 +165,15 @@ export const OneShareholderAllMoneyReceipt = (props) => {
 
                     </thead>
 
-                    <tbody>{allMoneyReceiptShow}</tbody>
+                    <tbody>
+                        {allMoneyReceiptShow}
+
+                        <tr className='fw-bold'>
+                            <td colSpan='3'>Grand Total</td>
+                            <td colSpan=''> {sumAmount()} /=</td>
+                            <td colSpan='6'>Tk. {convertToText(sumAmount())}  Only</td>
+                        </tr>
+                    </tbody>
                 </Table>
             </div>
         </div>

@@ -27,7 +27,7 @@ export const Navbar = (props) => {
 
 
 
-        if (true && window.location.href.indexOf('admin-panel') === -1) {
+        if (true && window.location.href.indexOf('admin-panel') === -1 && window.location.pathname != '/shareholder/payment-slip') {
 
             if (document.documentElement.scrollTop > 75) {
                 document.getElementById('navbar').classList.add('position-fixed', 'top-0', 'bg-dark', 'w-100')
