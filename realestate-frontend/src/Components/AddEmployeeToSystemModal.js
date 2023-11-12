@@ -26,7 +26,7 @@ export default function AddEmployeeToSystemModal(props) {
         addEmployeeSystemAccount({
             ...state,
             role: 'employee',
-            employeeId: props.selectedEmployee._id
+            employeeId: props.selectedEmployeeForSystem._id
         }).then(data => {
             if (data.error) throw data.message
         })
@@ -41,7 +41,7 @@ export default function AddEmployeeToSystemModal(props) {
 
             <Modal isOpen={props.isOpen} toggle={props.toggle} size='lg'>
 
-                <ModalHeader toggle={props.toggle}>Create Employee Account for {props.selectedEmployee === undefined ? '' : props.selectedEmployee.employeeName}</ModalHeader>
+                <ModalHeader toggle={props.toggle}>Create Employee Account for {props.selectedEmployeeForSystem === undefined ? '' : props.selectedEmployeeForSystem.employeeName}</ModalHeader>
 
                 <ModalBody>
 

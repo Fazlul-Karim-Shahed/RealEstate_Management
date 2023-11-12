@@ -1,5 +1,4 @@
 
-
 import React, { useEffect, useState } from 'react'
 import { Modal, ModalBody, ModalHeader } from 'reactstrap'
 import { updateEmployeeAccessPermission } from '../../Api/EmployeeApi'
@@ -7,18 +6,15 @@ import { objModifyInArr } from '../../Functions/CustomFunction'
 
 export default function AdminEmployeePermissionModal(props) {
 
-
     const [tempAdminTime, setTempAdminTime] = useState('')
     const [employeePermission, setEmployeePermission] = useState([])
 
     useEffect(() => {
 
-        if (props.selectedEmployee.hasOwnProperty('accessPermission')) {
-            let arr = objModifyInArr([...props.selectedEmployee.accessPermission]) // add key 'checked'
-            setEmployeePermission(arr)
-        }
-
-    }, [props])
+        let arr = objModifyInArr(props.selectedEmployeeForPermission.accessPermission) // add key 'checked'
+        setEmployeePermission(arr)
+        
+    }, [props.selectedEmployeeForPermission])
 
 
 
@@ -41,7 +37,7 @@ export default function AdminEmployeePermissionModal(props) {
             }
         }
 
-        updateEmployeeAccessPermission(props.selectedEmployee._id, permissionArr, tempAdminTime).then(data => {
+        updateEmployeeAccessPermission(props.selectedEmployeeForPermission._id, permissionArr, tempAdminTime).then(data => {
             if (data.error) throw data.message
 
 
@@ -56,7 +52,7 @@ export default function AdminEmployeePermissionModal(props) {
         let arr = [...employeePermission]
         arr[index].checked = !arr[index].checked
 
-        setEmployeePermission([...arr])
+        setEmployeePermission(arr)
 
     }
 
@@ -69,14 +65,16 @@ export default function AdminEmployeePermissionModal(props) {
 
                     <ModalHeader toggle={props.toggle}>
 
-                        Permission for {props.selectedEmployee === null ? '' : props.selectedEmployee.username} <br />
-                        <div className='mt-2 fw-normal small'>Current Permission Time: {props.selectedEmployee === null ? '' : props.selectedEmployee.tempAdminTime}</div>
+                        {/* {console.log(props.selectedEmployeeForPermission)} */}
+
+                        Permission for {props.selectedEmployeeForPermission === undefined ? '' : props.selectedEmployeeForPermission.employeeName} <br />
+                        <div className='mt-2 fw-normal small'>Current Permission Time: {props.selectedEmployeeForPermission === undefined ? '' : props.selectedEmployeeForPermission.tempAdminTime}</div>
 
                     </ModalHeader>
                     <ModalBody>
 
                         {
-                            props.selectedEmployee === null ? <h5 className='text-center text-danger fw-bold my-5'>Please add employee to the system</h5> :
+                            props.selectedEmployeeForPermission === null ? <h5 className='text-center text-danger fw-bold my-5'>Please add employee to the system</h5> :
 
                                 <form onSubmit={e => handleSubmit(e)} className='form-check form-switch' action="">
 

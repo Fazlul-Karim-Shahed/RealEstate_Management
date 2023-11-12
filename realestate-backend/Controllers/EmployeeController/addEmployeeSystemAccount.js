@@ -2,13 +2,14 @@
 const _ = require('lodash')
 const { EmployeeSchema } = require('../../Schemas/EmployeeSchema')
 const bcrypt = require('bcrypt')
+const { checkEmail } = require('../checkEmail')
 
 
 const addEmployeeSystemAccount = async (req, res) => {
 
-    let checkEmail = await EmployeeSchema.findOne({ email: req.body.email })
+    let matchEmail = await checkEmail(req.body.email)
 
-    if (checkEmail) {
+    if (matchEmail) {
         res.send({
             message: 'Email already exist', error: true
         })
@@ -21,7 +22,7 @@ const addEmployeeSystemAccount = async (req, res) => {
         EmployeeSchema.findOneAndUpdate({ _id: req.body.employeeId }, {
             email: req.body.email,
             password: hashedPass,
-            role: req.body.role,
+            role: 'employee',
             systemAccount: true
         }).then(data => {
             res.send({

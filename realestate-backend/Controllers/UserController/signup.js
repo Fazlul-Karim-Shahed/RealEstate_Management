@@ -1,34 +1,43 @@
 
 const _ = require('lodash')
-const { UserSchema } = require('../../Schemas/UserSchema')
+const { EmployeeSchema } = require('../../Schemas/EmployeeSchema')
+const { ShareholderSchema } = require('../../Schemas/ShareholderSchema')
+const { AdminSchema } = require('../../Schemas/AdminSchema')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken');
+const { checkEmail } = require('../checkEmail')
 
 
 const signup = async (req, res) => {
 
+    let data = await checkEmail(req.body.email)
 
-    let data = await UserSchema.findOne({ email: req.body.email })
-    if (data) {
-        res.send({ message: 'User already exist', error: true })
-    }
-    else {
+    if (!data) {
 
-        data = _.pick(req.body, ['username', 'email', 'password']);
+
+        data = _.pick(req.body, ['email', 'password', 'adminName']);
         let salt = await bcrypt.genSalt(10)
         let hashedPass = await bcrypt.hash(data.password, salt)
 
-        data = new UserSchema({
-            username: data.username,
+        data = new AdminSchema({
             email: data.email,
             password: hashedPass,
+            adminName: data.adminName
         })
 
         data = data.save().then(data => {
 
-            const token = jwt.sign(_.pick(data, ['username', 'email', 'password', 'role', 'status', 'acceptedShareholder', 'acceptedInvestor', 'tempAdminTime', 'accessPermission', '_id']), process.env.SECRET_KEY, { expiresIn: '1h' })
+            const token = jwt.sign({
+
+                username: data.adminName,
+                email: data.email,
+                role: data.role,
+                _id: data._id
+
+            }, process.env.SECRET_KEY, { expiresIn: '10h' })
+
             res.send({
-                message: 'Registration complete', error: false, value: {
+                message: 'Admin Registration complete', error: false, value: {
                     token: token
                 }
             })
@@ -37,6 +46,13 @@ const signup = async (req, res) => {
                 res.send({ message: 'Something went wrong while signup', error: true, value: err.message })
             })
 
+
+
+
+    }
+    else {
+
+        res.send({ message: 'Email already exist', error: true })
 
     }
 

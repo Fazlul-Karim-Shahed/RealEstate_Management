@@ -1,6 +1,8 @@
 
 const jwt = require('jsonwebtoken')
-const { UserSchema } = require('../Schemas/UserSchema')
+const { AdminSchema } = require('../Schemas/AdminSchema')
+const { EmployeeSchema } = require('../Schemas/EmployeeSchema')
+const { ShareholderSchema } = require('../Schemas/ShareholderSchema')
 
 const accessPermissionCheck = permission => {
 
@@ -11,7 +13,7 @@ const accessPermissionCheck = permission => {
 
             if (data) {
 
-                let user = await UserSchema.findOne({ email: data.email })
+                let user = (data.role === 'admin') ? await AdminSchema.findOne({ email: data.email }) : (data.role === 'employee') ? await EmployeeSchema.findOne({ email: data.email }) : await ShareholderSchema.findOne({ email: data.email })
 
                 if (user) {
                     if (user.role === 'admin') {

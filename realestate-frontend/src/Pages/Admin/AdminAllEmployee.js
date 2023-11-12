@@ -21,7 +21,8 @@ export const AdminAllEmployee = (props) => {
 
   const [addSystemModal, setAddSystemModal] = useState(false)
   const [permissionModal, setPermissionModal] = useState(false)
-  const [selectedEmployee, setSelectedEmployee] = useState({})
+  const [selectedEmployeeForSystem, setSelectedEmployeeForSystem] = useState({})
+  const [selectedEmployeeForPermission, setSelectedEmployeeForPermission] = useState({})
 
 
   useEffect(() => {
@@ -36,24 +37,29 @@ export const AdminAllEmployee = (props) => {
 
   }, [])
 
-  const addSystemToggle = (e, item) => {
 
-    e.stopPropagation();
-    e.nativeEvent.stopImmediatePropagation();
 
-    setSelectedEmployee(item)
+  const addSystemToggle = (item) => {
+
+    
+
+    if (item != undefined) { setSelectedEmployeeForSystem(item) }
+    else {
+      setSelectedEmployeeForPermission({})
+    }
     setAddSystemModal(!addSystemModal)
 
   }
 
-  const permissionModalToggle = (e, item) => {
-
-    if (item != undefined) {
-      setSelectedEmployee(item)
+  const permissionModalToggle = (item) => {
+    if (item != undefined) { setSelectedEmployeeForPermission(item) }
+    else {
+      setSelectedEmployeeForPermission({})
     }
     setPermissionModal(!permissionModal)
 
   }
+
 
 
   let allEmployeeShow
@@ -66,8 +72,8 @@ export const AdminAllEmployee = (props) => {
         <td> {item.employeeName}</td>
         <td>{item.nidNumber}</td>
         <td>{item.mobile}</td>
-        <td><button onClick={(e) => permissionModalToggle(e, item)} className='btn btn-secondary'>View</button></td>
-        <td>{item.systemAccount ? <span><button className='mb-2 btn btn-danger btn-sm'>Remove account</button> <br /> <button className='btn btn-warning btn-sm'>Change password</button></span> : <button className='btn btn-primary' onClick={(e) => addSystemToggle(e, item)}>Allow system login</button>}</td>
+        <td><button onClick={() => permissionModalToggle(item)} className='btn btn-secondary'>View</button></td>
+        <td>{item.systemAccount ? <span><button className='mb-2 btn btn-danger btn-sm'>Remove account</button> <br /> <button className='btn btn-warning btn-sm'>Change password</button></span> : <button className='btn btn-primary' onClick={() => addSystemToggle(item)}>Allow system login</button>}</td>
         <td><button className='btn btn-info'>Details</button></td>
 
       </tr>
@@ -99,10 +105,10 @@ export const AdminAllEmployee = (props) => {
       </div>
 
 
-      <AdminEmployeePermissionModal isOpen={permissionModal} toggle={permissionModalToggle} selectedEmployee={selectedEmployee} />
+      <AdminEmployeePermissionModal isOpen={permissionModal} toggle={permissionModalToggle} selectedEmployeeForPermission={selectedEmployeeForPermission} />
 
 
-      <AddEmployeeToSystemModal isOpen={addSystemModal} toggle={addSystemToggle} selectedEmployee={selectedEmployee} />
+      <AddEmployeeToSystemModal isOpen={addSystemModal} toggle={addSystemToggle} selectedEmployeeForSystem={selectedEmployeeForSystem} />
 
     </div>
   )
