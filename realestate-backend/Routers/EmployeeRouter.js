@@ -14,8 +14,7 @@ const router = require('express').Router()
 router.put('/approve/:employeeId', accessPermissionCheck('approveEmployee'), approveEmployee)
 router.get('/', accessPermissionCheck('getAllEmployee'), getAllEmployee)
 router.post('/add', accessPermissionCheck('addEmployee'), addEmployee)
-router.post('/add-system', accessPermissionCheck('addEmployeeSystemAccount'), addEmployeeSystemAccount)
-router.get('/system-account/:employeeId', accessPermissionCheck('getAEmployeeSystemAccount'), getAEmployeeSystemAccount)
+router.put('/add-system', accessPermissionCheck('addEmployeeSystemAccount'), addEmployeeSystemAccount)
 router.put('/permission/:employeeId', accessPermissionCheck('updateEmployeePermission'), updateEmployeePermission)
 
 module.exports = router

@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react'
 import { Modal, ModalBody, ModalHeader } from 'reactstrap'
-import { getAEmployeeSystemAccount, updateEmployeeAccessPermission } from '../../Api/EmployeeApi'
+import { updateEmployeeAccessPermission } from '../../Api/EmployeeApi'
 import { objModifyInArr } from '../../Functions/CustomFunction'
 
 export default function AdminEmployeePermissionModal(props) {
@@ -13,12 +13,12 @@ export default function AdminEmployeePermissionModal(props) {
 
     useEffect(() => {
 
-        if (props.selectedEmployee != null) {
+        if (props.selectedEmployee.hasOwnProperty('accessPermission')) {
             let arr = objModifyInArr([...props.selectedEmployee.accessPermission]) // add key 'checked'
             setEmployeePermission(arr)
         }
 
-    }, [props.selectedEmployee])
+    }, [props])
 
 
 
@@ -41,13 +41,10 @@ export default function AdminEmployeePermissionModal(props) {
             }
         }
 
-
-        console.log(props.selectedEmployee._id, permissionArr, tempAdminTime)
-
         updateEmployeeAccessPermission(props.selectedEmployee._id, permissionArr, tempAdminTime).then(data => {
             if (data.error) throw data.message
 
-            console.log(data.data)
+
         }).catch(err => window.alert(err))
 
     }

@@ -22,7 +22,6 @@ export const AdminAllEmployee = (props) => {
   const [addSystemModal, setAddSystemModal] = useState(false)
   const [permissionModal, setPermissionModal] = useState(false)
   const [selectedEmployee, setSelectedEmployee] = useState({})
-  const [employeeSystemInfo, setEmployeeSystemInfo] = useState(null)
 
 
   useEffect(() => {
@@ -50,34 +49,14 @@ export const AdminAllEmployee = (props) => {
   const permissionModalToggle = (e, item) => {
 
     if (item != undefined) {
-      getAEmployeeSystemAccount(item._id).then(data => {
-
-        if (data.error) throw data.message
-
-        setEmployeeSystemInfo(data.data)
-
-      })
-
-        .catch(err => {
-
-          setEmployeeSystemInfo(null)
-          window.alert(err)
-        })
+      setSelectedEmployee(item)
     }
-
     setPermissionModal(!permissionModal)
 
   }
 
 
   let allEmployeeShow
-
-
-  const addToSystem = item => {
-
-    addEmployeeSystemAccount()
-
-  }
 
   allEmployeeShow = props.allEmployee.map((item, index) => {
 
@@ -120,7 +99,7 @@ export const AdminAllEmployee = (props) => {
       </div>
 
 
-      <AdminEmployeePermissionModal isOpen={permissionModal} toggle={permissionModalToggle} selectedEmployee={employeeSystemInfo} />
+      <AdminEmployeePermissionModal isOpen={permissionModal} toggle={permissionModalToggle} selectedEmployee={selectedEmployee} />
 
 
       <AddEmployeeToSystemModal isOpen={addSystemModal} toggle={addSystemToggle} selectedEmployee={selectedEmployee} />

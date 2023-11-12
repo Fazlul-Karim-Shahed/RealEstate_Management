@@ -85,9 +85,9 @@ export const AdminShareholder = (props) => {
         <td>{item.nidNumber}</td>
         <td>{item.tin}</td>
 
-        <td>
+        <td className=''>
           <button className='mb-2 btn btn-sm btn-outline-warning'><Link className='text-decoration-none text-black' to={`/admin-panel/shareholder/add-receipt/${item._id}`}>Add Receipt</Link></button><br />
-          <Link to={`/admin-panel/shareholder/money-receipt/view-all/${item._id}`}><button className='mb-2 btn btn-sm btn-outline-success'>View all</button> </Link>
+          <Link to={`/admin-panel/shareholder/money-receipt/view-all/${item._id}`}><button className='mb-2 btn btn-sm btn-outline-success'>View all</button> </Link> <br />
           <button className=' btn btn-sm btn-outline-success'>View summery</button>
         </td>
 
@@ -113,7 +113,7 @@ export const AdminShareholder = (props) => {
       <button className='btn btn-primary px-3 my-3 me-4'><Link to='/admin-panel/shareholder/add' className='text-decoration-none text-white'>Add New Shareholder</Link></button>
       <button className='btn btn-secondary px-3 my-3'><Link to='' className='text-decoration-none text-white'>All payment summery</Link></button>
 
-      <Table bordered>
+      <Table className='small text-center' bordered>
         <thead>
           <tr>
             <th>#</th>

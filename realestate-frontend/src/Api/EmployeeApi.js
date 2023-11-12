@@ -35,7 +35,7 @@ export const getAllEmployee = async () => {
 
 export const addEmployeeSystemAccount = async (obj) => {
 
-    let data = axios.post(process.env.REACT_APP_BACKEND_URL + '/api/employee/add-system', obj, {
+    let data = axios.put(process.env.REACT_APP_BACKEND_URL + '/api/employee/add-system', obj, {
 
         headers: {
             Authorization: localStorage.getItem(process.env.REACT_APP_LOCAL_TOKEN_NAME),

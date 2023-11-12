@@ -25,14 +25,12 @@ export default function AddEmployeeToSystemModal(props) {
 
         addEmployeeSystemAccount({
             ...state,
-            username: props.selectedEmployee.employeeName,
             role: 'employee',
-            status: 'general',
             employeeId: props.selectedEmployee._id
         }).then(data => {
-            if(data.error) throw data.message
+            if (data.error) throw data.message
         })
-        .catch(err=>window.alert(err))
+            .catch(err => window.alert(err))
 
     }
 
