@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { Modal, ModalBody, ModalHeader, Table } from 'reactstrap'
 import { addEmployeeSystemAccount, getAEmployeeSystemAccount, getAllEmployee } from '../../Api/EmployeeApi'
-import AddEmployeeToSystemModal from '../../Components/AddEmployeeToSystemModal'
+import AddEmployeeToSystemModal from './AddEmployeeToSystemModal'
 import AdminEmployeePermissionModal from './AdminEmployeePermissionModal'
 import { GET_ALL_EMPLOYEE } from '../../Redux/ActionTypes'
 

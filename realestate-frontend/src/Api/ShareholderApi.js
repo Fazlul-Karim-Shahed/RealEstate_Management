@@ -86,3 +86,34 @@ export const getOneShareholderAllMoneyReceipt = async (id) => {
 
 }
 
+export const addShareholderSystemAccount = async (obj) => {
+
+    let data = axios.put(process.env.REACT_APP_BACKEND_URL + '/api/shareholder/add-system', obj, {
+
+        headers: {
+            Authorization: localStorage.getItem(process.env.REACT_APP_LOCAL_TOKEN_NAME),
+        }
+
+    }).then(data => data.data)
+
+
+    return data
+
+}
+
+
+export const updateShareholderAccessPermission = async (id, arr, time) => {
+
+    let data = axios.put(process.env.REACT_APP_BACKEND_URL + '/api/shareholder/permission/' + id, { arr: arr, time: time }, {
+
+        headers: {
+            Authorization: localStorage.getItem(process.env.REACT_APP_LOCAL_TOKEN_NAME),
+        }
+
+    }).then(data => data.data)
+
+
+    return data
+
+}
+

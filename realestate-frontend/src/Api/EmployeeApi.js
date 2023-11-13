@@ -48,20 +48,20 @@ export const addEmployeeSystemAccount = async (obj) => {
 
 }
 
-export const getAEmployeeSystemAccount = async (id) => {
+// export const getAEmployeeSystemAccount = async (id) => {
 
-    let data = axios.get(process.env.REACT_APP_BACKEND_URL + '/api/employee/system-account/' + id, {
+//     let data = axios.get(process.env.REACT_APP_BACKEND_URL + '/api/employee/system-account/' + id, {
 
-        headers: {
-            Authorization: localStorage.getItem(process.env.REACT_APP_LOCAL_TOKEN_NAME),
-        }
+//         headers: {
+//             Authorization: localStorage.getItem(process.env.REACT_APP_LOCAL_TOKEN_NAME),
+//         }
 
-    }).then(data => data.data)
+//     }).then(data => data.data)
 
 
-    return data
+//     return data
 
-}
+// }
 
 
 export const updateEmployeeAccessPermission = async (id, arr, time) => {

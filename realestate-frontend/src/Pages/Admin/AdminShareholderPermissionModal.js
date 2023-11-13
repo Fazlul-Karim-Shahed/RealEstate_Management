@@ -1,20 +1,20 @@
 
 import React, { useEffect, useState } from 'react'
 import { Modal, ModalBody, ModalHeader } from 'reactstrap'
-import { updateEmployeeAccessPermission } from '../../Api/EmployeeApi'
 import { objModifyInArr } from '../../Functions/CustomFunction'
+import { updateShareholderAccessPermission } from '../../Api/ShareholderApi'
 
-export default function AdminEmployeePermissionModal(props) {
+export default function AdminShareholderPermissionModal(props) {
 
     const [tempAdminTime, setTempAdminTime] = useState('')
-    const [employeePermission, setEmployeePermission] = useState([])
+    const [shareholderPermission, setShareholderPermission] = useState([])
 
     useEffect(() => {
 
-        let arr = objModifyInArr(props.selectedEmployeeForPermission.accessPermission) // add key 'checked'
-        setEmployeePermission(arr)
-        
-    }, [props.selectedEmployeeForPermission])
+        let arr = objModifyInArr(props.selected.accessPermission) // add key 'checked'
+        setShareholderPermission(arr)
+
+    }, [props.selected])
 
 
 
@@ -28,16 +28,18 @@ export default function AdminEmployeePermissionModal(props) {
 
         let permissionArr = []
 
-        for (let i in employeePermission) {
-            if (employeePermission[i].checked) {
+        for (let i in shareholderPermission) {
+            if (shareholderPermission[i].checked) {
                 permissionArr.push({
-                    permission: employeePermission[i].permission,
-                    value: employeePermission[i].value
+                    permission: shareholderPermission[i].permission,
+                    value: shareholderPermission[i].value
                 })
             }
         }
 
-        updateEmployeeAccessPermission(props.selectedEmployeeForPermission._id, permissionArr, tempAdminTime).then(data => {
+        updateShareholderAccessPermission(props.selected._id, permissionArr, tempAdminTime).then(data => {
+
+            console.log(data)
             if (data.error) throw data.message
 
 
@@ -49,10 +51,10 @@ export default function AdminEmployeePermissionModal(props) {
 
     const handleCheck = (e, index) => {
 
-        let arr = [...employeePermission]
+        let arr = [...shareholderPermission]
         arr[index].checked = !arr[index].checked
 
-        setEmployeePermission(arr)
+        setShareholderPermission(arr)
 
     }
 
@@ -65,20 +67,18 @@ export default function AdminEmployeePermissionModal(props) {
 
                     <ModalHeader toggle={props.toggle}>
 
-                        {/* {console.log(props.selectedEmployeeForPermission)} */}
-
-                        Permission for {props.selectedEmployeeForPermission === undefined ? '' : props.selectedEmployeeForPermission.employeeName} <br />
-                        <div className='mt-2 fw-normal small'>Current Permission Time: {props.selectedEmployeeForPermission === undefined ? '' : props.selectedEmployeeForPermission.tempAdminTime}</div>
+                        Permission for {props.selected === undefined ? '' : props.selected.shareholderName} <br />
+                        <div className='mt-2 fw-normal small'>Current Permission Time: {props.selected === undefined ? '' : props.selected.tempAdminTime}</div>
 
                     </ModalHeader>
                     <ModalBody>
 
                         {
-                            props.selectedEmployeeForPermission === null ? <h5 className='text-center text-danger fw-bold my-5'>Please add employee to the system</h5> :
+                            props.selected === null ? <h5 className='text-center text-danger fw-bold my-5'>Please add shareholder to the system</h5> :
 
                                 <form onSubmit={e => handleSubmit(e)} className='form-check form-switch' action="">
 
-                                    {employeePermission.map((item, index) => {
+                                    {shareholderPermission.map((item, index) => {
 
                                         return (
                                             <div>

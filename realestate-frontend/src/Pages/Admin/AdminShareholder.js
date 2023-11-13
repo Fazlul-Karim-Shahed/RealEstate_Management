@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
-import { Form, FormGroup, Input, Label, Modal, ModalBody, ModalHeader, Table } from 'reactstrap'
-import { Permissions } from '../../Functions/Permissions'
+import { Table } from 'reactstrap'
 import { Link } from 'react-router-dom'
-import { getAllShareholder } from '../../Api/ShareholderApi'
 import { GET_ALL_SHAREHOLDER } from '../../Redux/ActionTypes'
+import AdminShareholderAddSystemModal from './AdminShareholderAddSystemModal'
+import AdminShareholderPermissionModal from './AdminShareholderPermissionModal'
+import { getAllShareholder } from '../../Api/ShareholderApi'
 
 const mapStateToProps = (state) => {
 
@@ -16,6 +17,10 @@ const mapStateToProps = (state) => {
 
 export const AdminShareholder = (props) => {
 
+  const [addSystemModal, setAddSystemModal] = useState(false)
+  const [permissionModal, setPermissionModal] = useState(false)
+  const [selectedShareholderForSystem, setSelectedShareholderForSystem] = useState({})
+  const [selectedShareholderForPermission, setSelectedShareholderForPermission] = useState({})
 
   useEffect(() => {
 
@@ -31,38 +36,27 @@ export const AdminShareholder = (props) => {
   }, [])
 
 
-  const [selectedShareholder, setSelectedShareholder] = useState({})
-  const [permissionState, setPermissionState] = useState({})
-  const [tempAdminTime, setTempAdminTime] = useState('')
 
+  const addSystemToggle = (item) => {
 
-
-  let handleChange = (e) => {
-
-    if (e.target.type === 'datetime-local') {
-      setTempAdminTime(new Date(e.target.value).toLocaleString())
-    }
+    if (item != undefined) { setSelectedShareholderForSystem(item) }
     else {
-      setPermissionState({
-        ...permissionState,
-        [e.target.name]: e.target.checked
-      })
+      setSelectedShareholderForPermission({})
     }
+    setAddSystemModal(!addSystemModal)
 
   }
 
-  let handleSubmit = (e) => {
-
-    e.preventDefault()
-    let permissionArr = []
-
-    for (let i in permissionState) {
-      if (permissionState[i]) {
-        Permissions.forEach((item) => item.permission === i ? permissionArr.push(item) : '')
-      }
+  const permissionModalToggle = (item) => {
+    if (item != undefined) { setSelectedShareholderForPermission(item) }
+    else {
+      setSelectedShareholderForPermission({})
     }
+    setPermissionModal(!permissionModal)
 
   }
+
+
 
 
   let allShareholderShow
@@ -94,10 +88,10 @@ export const AdminShareholder = (props) => {
         <td>
           {item.systemAccount ? <span><button className='mb-2 btn btn-sm btn-danger'>Remove account</button> <br />
             <button>Change password</button></span> :
-            <button className=' btn btn-sm btn-outline-primary'>Allow system login</button>}
+            <button onClick={() => addSystemToggle(item)} className=' btn btn-sm btn-outline-primary'>Allow system login</button>}
         </td>
 
-        <td><button className='btn btn-sm btn-outline-secondary'>View</button></td>
+        <td><button onClick={() => permissionModalToggle(item)} className='btn btn-sm btn-outline-secondary'>View</button></td>
         <td><button className='btn btn-sm btn-outline-info'>Details</button></td>
         <td><button className=''>Send Message</button></td>
       </tr>
@@ -134,6 +128,10 @@ export const AdminShareholder = (props) => {
 
         <tbody>{allShareholderShow}</tbody>
       </Table>
+
+      <AdminShareholderAddSystemModal isOpen={addSystemModal} toggle={addSystemToggle} selected={selectedShareholderForSystem} />
+
+      <AdminShareholderPermissionModal isOpen={permissionModal} toggle={permissionModalToggle} selected={selectedShareholderForPermission} />
 
 
     </div>

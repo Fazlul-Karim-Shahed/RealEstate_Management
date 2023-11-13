@@ -13,7 +13,6 @@ const signin = async (req, res) => {
 
     let data = await checkEmail(req.body.email)
 
-
     if (!data) {
         res.send({ message: 'User not found', error: true })
     }
@@ -25,7 +24,7 @@ const signin = async (req, res) => {
             const token = jwt.sign({
 
                 username: (data.role === 'admin') ? data.adminName : (data.role === 'employee') ? data.employeeName : data.shareholderName,
-                
+
                 email: data.email,
                 role: data.role,
                 _id: data._id

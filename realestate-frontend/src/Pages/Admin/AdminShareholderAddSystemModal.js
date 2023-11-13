@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { Modal, ModalBody, ModalHeader } from 'reactstrap'
-import { addEmployeeSystemAccount } from '../Api/EmployeeApi'
+import { addShareholderSystemAccount } from '../../Api/ShareholderApi'
 
-export default function AddEmployeeToSystemModal(props) {
+export default function AdminShareholderAddSystemModal(props) {
 
     const [state, setState] = useState({
         email: '',
@@ -23,11 +23,16 @@ export default function AddEmployeeToSystemModal(props) {
 
         e.preventDefault()
 
-        addEmployeeSystemAccount({
+        console.log({
             ...state,
-            role: 'employee',
-            employeeId: props.selectedEmployeeForSystem._id
+            shareholderId: props.selected._id
+        })
+
+        addShareholderSystemAccount({
+            ...state,
+            shareholderId: props.selected._id
         }).then(data => {
+            console.log(data)
             if (data.error) throw data.message
         })
             .catch(err => window.alert(err))
@@ -41,7 +46,7 @@ export default function AddEmployeeToSystemModal(props) {
 
             <Modal isOpen={props.isOpen} toggle={props.toggle} size='lg'>
 
-                <ModalHeader toggle={props.toggle}>Create Employee Account for {props.selectedEmployeeForSystem === undefined ? '' : props.selectedEmployeeForSystem.employeeName}</ModalHeader>
+                <ModalHeader toggle={props.toggle}>Create shareholder account for {props.selected === undefined ? '' : props.selected.shareholderName}</ModalHeader>
 
                 <ModalBody>
 
@@ -50,12 +55,12 @@ export default function AddEmployeeToSystemModal(props) {
 
                             <div className='my-4'>
                                 <label className='me-3' htmlFor="email">Email: </label>
-                                <input onChange={e => handleChange(e)} id='email' name='email' value={state.email} type="email" /> <br />
+                                <input required onChange={e => handleChange(e)} id='email' name='email' value={state.email} type="email" /> <br />
                             </div>
 
                             <div className='my-4'>
                                 <label className='me-3' htmlFor="password">Password: </label>
-                                <input onChange={e => handleChange(e)} id='password' name='password' value={state.password} type="text" /> <br />
+                                <input required onChange={e => handleChange(e)} id='password' name='password' value={state.password} type="text" /> <br />
                             </div> <br />
 
                             <button>Submit</button>
