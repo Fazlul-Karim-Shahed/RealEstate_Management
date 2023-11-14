@@ -74,7 +74,7 @@ export default function AdminEmployeePermissionModal(props) {
                     <ModalBody>
 
                         {
-                            props.selectedEmployeeForPermission === null ? <h5 className='text-center text-danger fw-bold my-5'>Please add employee to the system</h5> :
+                            !props.selectedEmployeeForPermission.systemAccount ? <h5 className='text-center text-danger fw-bold my-5'>Please add employee to the system first</h5> :
 
                                 <form onSubmit={e => handleSubmit(e)} className='form-check form-switch' action="">
 

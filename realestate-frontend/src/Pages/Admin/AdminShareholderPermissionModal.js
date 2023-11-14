@@ -11,6 +11,8 @@ export default function AdminShareholderPermissionModal(props) {
 
     useEffect(() => {
 
+        console.log(props.selected)
+
         let arr = objModifyInArr(props.selected.accessPermission) // add key 'checked'
         setShareholderPermission(arr)
 
@@ -74,7 +76,7 @@ export default function AdminShareholderPermissionModal(props) {
                     <ModalBody>
 
                         {
-                            props.selected === null ? <h5 className='text-center text-danger fw-bold my-5'>Please add shareholder to the system</h5> :
+                            !props.selected.systemAccount ? <h5 className='text-center text-danger fw-bold my-5'>Please add shareholder to the system first</h5> :
 
                                 <form onSubmit={e => handleSubmit(e)} className='form-check form-switch' action="">
 

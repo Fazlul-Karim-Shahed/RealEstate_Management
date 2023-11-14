@@ -1,7 +1,7 @@
 const { signin } = require('../Controllers/UserController/signin')
 const { signup } = require('../Controllers/UserController/signup')
 const { accessPermissionCheck } = require('../Middlewares/accessPermissionCheck')
-const { getPending } = require('../Controllers/UserController/getAllPending')
+const { getPending } = require('../Controllers/Common/getAllPending')
 
 
 const router = require('express').Router()

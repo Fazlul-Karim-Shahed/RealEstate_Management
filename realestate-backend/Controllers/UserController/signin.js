@@ -2,9 +2,6 @@
 const _ = require('lodash')
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
-const { EmployeeSchema } = require('../../Schemas/EmployeeSchema');
-const { ShareholderSchema } = require('../../Schemas/ShareholderSchema');
-const { AdminSchema } = require('../../Schemas/AdminSchema');
 const { checkEmail } = require('../checkEmail');
 
 
