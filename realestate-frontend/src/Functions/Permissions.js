@@ -15,7 +15,6 @@ export const Permissions = [
     { permission: 'addEmployee', value: 'Add new employee' },
     { permission: 'addEmployeeSystemAccount', value: 'Create employee system account' },
     { permission: 'updateEmployeePermission', value: 'Update employee permission' },
-    { permission: 'getAEmployeeSystemAccount', value: 'View Permissions / employee system account' },
     { permission: 'approveEmployee', value: 'Approve new employee' },
     // Combined
     { permission: 'getPending', value: 'View all pending' },
